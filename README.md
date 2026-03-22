@@ -112,3 +112,13 @@ Nas horas livres, fotografo nas ruas e entusiasta de programacao e inteligencia 
 feito com camera na rua e codigo no terminal
 <br><br>
 </div>
+
+---
+
+<div align="center">
+<br>
+
+*Este projeto foi desenvolvido com auxilio de inteligencia artificial como parte de estudos e experimentos pessoais em desenvolvimento web. Todo o conteudo, conceito e direcao criativa sao autorais.*
+
+<br>
+</div>
