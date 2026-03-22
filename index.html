@@ -127,8 +127,11 @@
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://czeooazwgxxqubdpplhb.supabase.co">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@200;300;400&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@200;300;400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@200;300;400&display=swap" rel="stylesheet"></noscript>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root {
@@ -175,9 +178,9 @@ input,textarea,select{outline:none;font-family:var(--fu)}
 .nav-link{font-size:.7rem;font-weight:300;text-transform:uppercase;letter-spacing:.22em;color:var(--dim);padding:9px 0;display:flex;align-items:center;gap:10px;transition:color .3s;position:relative}
 .nav-link .num{font-family:var(--fd);font-size:.63rem;color:var(--accent);font-style:italic;min-width:18px}
 .nav-link .sep{color:rgba(200,200,200,.18);font-size:.55rem;font-style:normal;letter-spacing:0}
-.nav-link::before{content:'';position:absolute;left:-40px;top:50%;transform:translateY(-50%);width:0;height:1px;background:var(--accent);transition:width .35s}
+.nav-link::before{content:'';position:absolute;left:-40px;top:50%;transform:translateY(-50%) scaleX(0);transform-origin:left;width:28px;height:1px;background:var(--accent);transition:transform .35s}
 .nav-link:hover,.nav-link.active{color:var(--text)}
-.nav-link:hover::before,.nav-link.active::before{width:28px}
+.nav-link:hover::before,.nav-link.active::before{transform:translateY(-50%) scaleX(1)}
 .sb-bottom{padding-top:32px;border-top:1px solid var(--border);position:relative}
 .contact-trigger{background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:6px 0;color:var(--dim);transition:color .3s}
 .contact-trigger:hover{color:var(--text)}
@@ -235,15 +238,15 @@ input,textarea,select{outline:none;font-family:var(--fu)}
 .hero-bg img{transform:scale(1.06);animation:zoomHero 14s var(--eout) forwards}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.88) 0%,rgba(8,8,8,.3) 55%,rgba(8,8,8,.08) 100%)}
 .hero-content{position:relative;z-index:2;max-width:700px}
-.hero-tag{font-size:.63rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;opacity:0;transform:translateY(20px);animation:fadeUp .9s .3s var(--eout) forwards}
-.hero-title{font-family:var(--fd);font-size:clamp(3.2rem,5.5vw,6rem);font-weight:300;line-height:.95;margin-bottom:28px;opacity:0;transform:translateY(30px);animation:fadeUp 1s .5s var(--eout) forwards}
+.hero-tag{font-size:.63rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;opacity:0;animation:fadeIn .9s .3s var(--eout) forwards}
+.hero-title{font-family:var(--fd);font-size:clamp(3.2rem,5.5vw,6rem);font-weight:300;line-height:.95;margin-bottom:28px;opacity:0;animation:fadeIn 1s .5s var(--eout) forwards}
 .hero-title em{font-style:italic;color:var(--accent)}
-.hero-desc{font-size:.85rem;font-weight:300;line-height:1.85;color:rgba(245,245,245,.6);max-width:420px;margin-bottom:40px;opacity:0;transform:translateY(20px);animation:fadeUp .9s .7s var(--eout) forwards}
-.hero-cta{display:inline-flex;align-items:center;gap:16px;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;opacity:0;transform:translateY(20px);animation:fadeUp .9s .9s var(--eout) forwards;transition:gap .3s}
+.hero-desc{font-size:.85rem;font-weight:300;line-height:1.85;color:rgba(245,245,245,.6);max-width:420px;margin-bottom:40px;opacity:0;animation:fadeIn .9s .7s var(--eout) forwards}
+.hero-cta{display:inline-flex;align-items:center;gap:16px;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;opacity:0;animation:fadeIn .9s .9s var(--eout) forwards;transition:gap .3s}
 .hero-cta:hover{gap:24px}
 .hero-cta-line{width:40px;height:1px;background:var(--accent);transition:width .3s}
 .hero-cta:hover .hero-cta-line{width:56px}
-.scroll-hint{position:absolute;right:72px;bottom:64px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;animation:fadeUp 1s 1.1s var(--eout) forwards}
+.scroll-hint{position:absolute;right:72px;bottom:64px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;animation:fadeIn 1s 1.1s var(--eout) forwards}
 .scroll-hint span{font-size:.56rem;letter-spacing:.25em;text-transform:uppercase;color:var(--dim);writing-mode:vertical-rl}
 .scroll-hint-line{width:1px;height:48px;background:linear-gradient(to bottom,var(--accent),transparent)}
 
@@ -761,7 +764,7 @@ footer{padding:44px 72px;border-top:1px solid var(--border);display:flex;align-i
 <body>
 <div class="grain"></div>
 <button class="scroll-top-btn" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-<button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
+<button class="menu-toggle" id="menuToggle" aria-label="Abrir menu"><span></span><span></span><span></span></button>
 
 <!-- FULLSCREEN MOBILE MENU -->
 <div class="mobile-menu-overlay" id="mobileMenuOverlay">
@@ -1096,6 +1099,7 @@ footer{padding:44px 72px;border-top:1px solid var(--border);display:flex;align-i
       <div class="scroll-hint"><span>Scroll</span><div class="scroll-hint-line"></div></div>
     </section>
 
+    <main id="main-content">
     <!-- PORTFOLIO -->
     <div id="portfolio">
       <div class="grid" id="photoGrid">
@@ -1162,6 +1166,7 @@ footer{padding:44px 72px;border-top:1px solid var(--border);display:flex;align-i
     </section>
 
     <!-- FOOTER — clique 5x no nome para abrir admin -->
+    </main>
     <footer>
       <div class="f-name" id="footerName">Willian Villares</div>
       <div class="f-copy">© <span id="footerYear"></span> — Todos os direitos reservados</div>
@@ -1348,7 +1353,7 @@ async function loadAll() {
 ═══════════════════════════════════════════ */
 async function loadHeroBg() {
   try {
-    const { data } = await sb.from('settings').select('value').eq('key','hero_url').single()
+    const { data } = await sb.from('settings').select('value').eq('key','hero_url').maybeSingle()
     if (data?.value) applyHeroBg(data.value)
   } catch(e) { /* no settings table yet or no hero set */ }
 }
@@ -1369,7 +1374,7 @@ function applyHeroBg(url) {
 
 async function loadHeroAdmin() {
   try {
-    const { data } = await sb.from('settings').select('value').eq('key','hero_url').single()
+    const { data } = await sb.from('settings').select('value').eq('key','hero_url').maybeSingle()
     if (data?.value) {
       document.getElementById('heroCurrentImg').src = data.value
       document.getElementById('heroCurrentWrap').style.display = 'block'
@@ -1447,7 +1452,8 @@ function renderPortfolio() {
   grid.innerHTML = filtered.slice(0, 7).map((p, i) => `
     <div class="gi" onclick="openLb(${i})">
       <div class="gi-placeholder" id="gip-${i}"></div>
-      <img src="${esc(p.url)}" alt="${esc(p.title||'')}" loading="lazy"
+      <img src="${esc(p.url)}" alt="${esc(p.title||'')}"
+           ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'}
            onload="this.classList.add('loaded');const pl=document.getElementById('gip-${i}');if(pl)pl.classList.add('hidden')"
            onerror="this.classList.add('loaded')">
       <div class="ov">
@@ -1493,7 +1499,7 @@ function renderSeriesSection() {
     const lo = "this.classList.add('loaded')"
     const pl = "var pl=document.getElementById('sgi-ph-" + i + "');if(pl)pl.classList.add('hidden')"
     const imgHtml = coverUrl
-      ? '<img src="' + esc(coverUrl) + '" loading="lazy" onload="' + lo + ';' + pl + '" onerror="' + lo + '">'
+      ? '<img src="' + esc(coverUrl) + '" alt="' + esc(s.name) + '" loading="lazy" onload="' + lo + ';' + pl + '" onerror="' + lo + '">'
       : '<div style="background:#1a1a1a;width:100%;aspect-ratio:3/2"></div>'
     html += '<div class="series-gi" data-sid="' + esc(s.id) + '">'
           + '<div class="series-gi-placeholder" id="sgi-ph-' + i + '"></div>'
