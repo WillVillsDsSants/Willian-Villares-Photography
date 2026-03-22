@@ -23,15 +23,15 @@ Sony ZV-E10 · street · nocturne · cotidiano · arquitetura
 
 ## Sobre o Projeto
 
-Portfolio pessoal de fotografia urbana construido do zero — sem templates, sem CMS, sem frameworks. Um unico arquivo HTML com CSS e JavaScript puros, conectado a um backend real no Supabase e hospedado na Vercel com deploy automatico via GitHub.
+Portfolio pessoal de fotografia urbana construido do zero, sem templates, sem CMS, sem frameworks. Um unico arquivo HTML com CSS e JavaScript puros, conectado a um backend real no Supabase e hospedado na Vercel com deploy automatico via GitHub.
 
-O projeto nasceu da vontade de ter um espaco proprio para a fotografia e virou um exercicio completo de desenvolvimento web — do design ao backend, passando por otimizacao de performance, acessibilidade e SEO.
+O projeto nasceu da vontade de ter um espaco proprio para a fotografia e virou um exercicio completo de desenvolvimento web, do design ao backend, passando por otimizacao de performance, acessibilidade e SEO.
 
 ---
 
 ## A Fotografia
 
-Encontro nas ruas a minha maior inspiracao. Cada clique e uma tentativa de registrar o que passa despercebido na pressa do dia a dia — becos, fachadas, cenas noturnas, silhuetas contra a luz, reflexos no asfalto molhado.
+Encontro nas ruas a minha maior inspiracao. Cada clique e uma tentativa de registrar o que passa despercebido na pressa do dia a dia. Becos, fachadas, cenas noturnas, silhuetas contra a luz, reflexos no asfalto molhado.
 
 A camera nao como instrumento de registro, mas de **leitura da cidade**.
 
@@ -49,40 +49,30 @@ A camera nao como instrumento de registro, mas de **leitura da cidade**.
 | Camada | Tecnologia | Detalhe |
 |---|---|---|
 | **Frontend** | HTML · CSS · JavaScript | Single file, zero dependencias de build |
-| **Backend** | Supabase | PostgreSQL + Storage para fotos |
-| **Hospedagem** | Vercel | Deploy automatico via GitHub |
-| **Tipografia** | Cormorant Garamond · DM Sans | Google Fonts, carregamento nao-bloqueante |
+| **Backend** | Supabase | PostgreSQL para dados e Storage para fotos |
+| **Hospedagem** | Vercel | Deploy automatico a cada push no GitHub |
+| **Tipografia** | Cormorant Garamond · DM Sans | Google Fonts com carregamento nao bloqueante |
 | **Favicon** | SVG inline | Sem arquivo externo, carrega instantaneo |
 
 ---
 
-## Funcionalidades
+## Funcionalidades do Portfolio
 
-**Portfolio publico**
-- Grade de fotos dinamica com 5 modos de layout (2, 3, 4 colunas, masonry e destaque)
-- Lightbox com navegacao por teclado, painel de specs tecnicas e fundo desfocado
-- Secao de Series com modal de colecoes e animacao de entrada
-- Hero com foto configuravel via painel admin
-- Menu mobile fullscreen com animacao de entrada escalonada
+O portfolio publico oferece uma experiencia visual completa com 5 modos de layout configuravel para o grid de fotos: grade de 2, 3 ou 4 colunas, masonry com alturas livres e modo destaque com foto principal ampliada. Cada foto abre em um lightbox com navegacao por teclado, painel lateral de especificacoes tecnicas (camera, lente, ISO, abertura, velocidade) e fundo desfocado dinamico.
 
-**Painel Admin** *(acesso restrito por senha)*
-- Upload de fotos diretamente para o Supabase Storage
-- Gestao completa de fotos, series e categorias
-- Reordenacao por drag-and-drop com publicacao em lote
-- Selecao de layout do portfolio salvo no banco e aplicado em tempo real
-- Upload e troca da foto hero
-
-**Performance e SEO**
-- Fonts nao-bloqueantes com preload
-- `fetchpriority="high"` na primeira imagem (LCP)
-- Preconnect ao Supabase e dns-prefetch ao JSDelivr
-- `<main>` landmark, `aria-label` em todos os controles
-- Schema.org: Person, WebSite e ImageGallery
-- Open Graph e Twitter Card completos
+As fotos sao agrupadas em series tematicas com modal proprio, animacao de entrada escalonada e descricao da colecao. O hero da pagina inicial exibe uma foto de fundo configuravel com animacao de zoom suave. O menu mobile e um overlay fullscreen com animacao de entrada nos itens de navegacao.
 
 ---
 
-## Performance — Lighthouse
+## Performance e Acessibilidade
+
+O site foi construido com foco em performance real, sem bibliotecas de UI, sem framework JavaScript e sem etapas de build. Todo o codigo roda diretamente no browser.
+
+Algumas otimizacoes aplicadas: fonts carregadas de forma nao bloqueante via preload, `fetchpriority="high"` na primeira imagem para acelerar o LCP, preconnect ao Supabase e dns-prefetch ao CDN, requests ao banco agrupados em paralelo com `Promise.all` e settings combinados em uma unica query.
+
+Na acessibilidade: `<main>` landmark, `aria-label` em todos os controles interativos, `alt` descritivo em todas as imagens, navegacao completa por teclado no lightbox e estrutura semantica com Schema.org para Person, WebSite e ImageGallery.
+
+**Lighthouse**
 
 | Metrica | Desktop | Mobile |
 |---|---|---|
@@ -91,7 +81,13 @@ A camera nao como instrumento de registro, mas de **leitura da cidade**.
 | **Praticas recomendadas** | 100 / 100 | 96 / 100 |
 | **SEO** | 100 / 100 | 92 / 100 |
 
-> Limitacao principal: tamanho das imagens no Supabase (controlado pelo upload do usuario, nao pelo codigo)
+A principal limitacao no score mobile e o tamanho original das imagens armazenadas no Supabase, algo controlado pelo conteudo do usuario e nao pelo codigo.
+
+---
+
+## SEO
+
+Implementacao completa de metadados: Open Graph para preview em redes sociais, Twitter Card, canonical URL, metadados de idioma e localizacao geografica. Dados estruturados em JSON-LD seguindo o padrao Schema.org com tres blocos: Person, WebSite com SearchAction e ImageGallery. O arquivo `robots.txt` e valido e o sitemap e reconhecido pelo Google Search Console.
 
 ---
 
@@ -99,7 +95,7 @@ A camera nao como instrumento de registro, mas de **leitura da cidade**.
 
 ```
 /
-├── index.html          site completo — frontend + logica + admin
+├── index.html          site completo
 ├── vercel.json         headers de seguranca, cache e cleanUrls
 ├── banner.svg          banner do README
 ├── og-image.png        preview para redes sociais (1200x630)
@@ -111,16 +107,16 @@ A camera nao como instrumento de registro, mas de **leitura da cidade**.
 
 ## Sobre
 
-De dia, **analista de logistica** — processos, fluxos e dados operacionais.
+De dia, **analista de logistica** com foco em processos, fluxos operacionais e analise de dados. Nas horas livres, fotografo nas ruas de Bauru e entusiasta de **programacao** e **inteligencia artificial**.
 
-Nas horas livres, fotografo nas ruas e entusiasta de **programacao** e **inteligencia artificial**. Acredito que tecnologia e arte caminham juntas — este portfolio e a prova disso.
+Este portfolio e o resultado de unir essas tres areas. A fotografia forneceu o conteudo, a programacao construiu o espaco, e a IA foi uma ferramenta de estudo e experimentacao ao longo do desenvolvimento.
 
 | | |
 |---|---|
-| Logistica | Analise de processos, fluxos operacionais e dados |
-| Fotografia | Street photography, arquitetura, cotidiano urbano |
-| Dev | HTML · CSS · JavaScript · integracoes com APIs |
-| IA | Entusiasta de automacao, LLMs e ferramentas de IA |
+| **Logistica** | Analise de processos, fluxos operacionais e dados |
+| **Fotografia** | Street photography, arquitetura e cotidiano urbano |
+| **Desenvolvimento** | HTML · CSS · JavaScript · integracao com APIs |
+| **Inteligencia Artificial** | Entusiasta de automacao, LLMs e ferramentas de IA |
 
 ---
 
@@ -130,7 +126,6 @@ Nas horas livres, fotografo nas ruas e entusiasta de **programacao** e **intelig
 feito com camera na rua e codigo no terminal
 ```
 
-*Desenvolvido com auxilio de inteligencia artificial como parte de estudos e experimentos em desenvolvimento web.*
-*Todo o conceito, conteudo e direcao criativa sao autorais.*
+*Desenvolvido com auxilio de inteligencia artificial como parte de estudos e experimentos em desenvolvimento web. Todo o conceito, conteudo e direcao criativa sao autorais.*
 
 </div>
