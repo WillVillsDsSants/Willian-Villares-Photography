@@ -11,12 +11,11 @@
 [![Email](https://img.shields.io/badge/EMAIL-will.vills.ds.sants%40hotmail.com-c8c8c8?style=for-the-badge&logo=gmail&logoColor=c8c8c8&labelColor=0a0a0a&color=1a1a1a)](mailto:will.vills.ds.sants@hotmail.com)
 
 <br>
-
+<div align="center">
 ```
 Fotografia urbana · Bauru — SP · Brasil
 Sony ZV-E10 · street · nocturne · cotidiano · arquitetura
 ```
-
 </div>
 
 ---
