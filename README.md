@@ -20,7 +20,7 @@
 
 > *A cidade como ela e de verdade.*
 
-Encontro nas ruas a minha maior inspiracao. Cada clique e uma tentativa de registrar o que passa despercebido na pressa do dia a dia.
+Encontro nas ruas a minha maior inspiração. Cada clique e uma tentativa de registrar o que passa despercebido na pressa do dia a dia.
 
 Becos, fachadas, cenas noturnas, silhuetas contra a luz, reflexos no asfalto molhado. A camera nao como instrumento de registro, mas de leitura da cidade.
 
@@ -78,7 +78,7 @@ Portfolio construido do zero — nenhum template, nenhum CMS, nenhum framework. 
 
 De dia, analista de logistica — processos, fluxos e dados operacionais.
 
-Nas horas livres, fotografo nas ruas e entusiasta de programacao e inteligencia artificial. Acredito que tecnologia e arte caminham juntas — este portfolio e a prova disso.
+Nas horas livres, fotografo nas ruas e entusiasta de programação e inteligencia artificial. Acredito que tecnologia e arte caminham juntas — este portfólio e a prova disso.
 
 - Logistica e Processos
 - Fotografia Urbana
@@ -118,7 +118,7 @@ feito com camera na rua e codigo no terminal
 <div align="center">
 <br>
 
-*Este projeto foi desenvolvido com auxilio de inteligencia artificial como parte de estudos e experimentos pessoais em desenvolvimento web. Todo o conteudo, conceito e direcao criativa sao autorais.*
+*Este projeto foi desenvolvido com auxilio de inteligencia artificial como parte de estudos e experimentos pessoais em desenvolvimento web. Todo o conteudo, conceito e direção criativa são autorais.*
 
 <br>
 </div>
