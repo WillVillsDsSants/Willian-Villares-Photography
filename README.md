@@ -1,51 +1,14 @@
-[README(2).md](https://github.com/user-attachments/files/26165046/README.2.md)
 <div align="center">
 
-```
-░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-```
-
-# W I L L I A N · V I L L A R E S
-
-### `FOTOGRAFIA URBANA · BAURU — SP · BRASIL`
-
-```
-░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-```
-
-[![Site](https://img.shields.io/badge/▸_PORTFÓLIO-wvillares--photography.vercel.app-c8c8c8?style=flat-square&labelColor=080808&color=2a2a2a)](https://wvillares-photography.vercel.app)
-[![Instagram](https://img.shields.io/badge/▸_INSTAGRAM-@wvillares.photos-c8c8c8?style=flat-square&labelColor=080808&color=2a2a2a)](https://www.instagram.com/wvillares.photos/)
-
-</div>
-
----
+![Willian Villares Photography](banner.svg)
 
 <br>
 
-```
-A cidade como ela é de verdade.
-```
-
-Encontro nas ruas a minha maior inspiração. Cada clique é uma tentativa de registrar a beleza da metrópole — a arquitetura, o movimento, a autenticidade do cotidiano.
-
-Fotografo o que passa despercebido na pressa do dia a dia. Becos, fachadas, cenas noturnas, silhuetas contra a luz, reflexos no asfalto molhado. A câmera como ferramenta de observação — não de registro, mas de *leitura* da cidade.
-
-<br>
-
----
-
-<br>
-
-<div align="center">
-
-```
-  EQUIPAMENTO          LOCALIZAÇÃO          ESTILO
-  ───────────────      ───────────────      ───────────────
-  Sony ZV-E10          Bauru — SP           Street
-  16-50mm OSS          Brasil               Nocturne
-  f/3.5–5.6                                 Cotidiano
-                                            Arquitetura
-```
+[![Portfolio](https://img.shields.io/badge/Portfolio-wvillares--photography.vercel.app-lightgrey?style=flat-square&logo=vercel&logoColor=white&labelColor=111111&color=222222)](https://wvillares-photography.vercel.app)
+&nbsp;
+[![Instagram](https://img.shields.io/badge/Instagram-%40wvillares.photos-lightgrey?style=flat-square&logo=instagram&logoColor=white&labelColor=111111&color=222222)](https://www.instagram.com/wvillares.photos/)
+&nbsp;
+[![Email](https://img.shields.io/badge/Email-will.vills.ds.sants%40hotmail.com-lightgrey?style=flat-square&logo=gmail&logoColor=white&labelColor=111111&color=222222)](mailto:will.vills.ds.sants@hotmail.com)
 
 </div>
 
@@ -55,35 +18,11 @@ Fotografo o que passa despercebido na pressa do dia a dia. Becos, fachadas, cena
 
 <br>
 
-## `// O SITE`
+> *A cidade como ela e de verdade.*
 
-<br>
+Encontro nas ruas a minha maior inspiracao. Cada clique e uma tentativa de registrar o que passa despercebido na pressa do dia a dia.
 
-Um portfólio construído do zero — design, lógica e infraestrutura. Nenhum template, nenhum CMS, nenhum framework. HTML, CSS e JavaScript puros, servidos como arquivo único.
-
-<br>
-
-```
-STACK
-──────────────────────────────────────────
-Frontend      →  HTML · CSS · JavaScript
-Backend       →  Supabase (PostgreSQL + Storage)
-Hospedagem    →  Vercel
-Tipografia    →  Cormorant Garamond · DM Sans
-──────────────────────────────────────────
-```
-
-<br>
-
-```
-PERFORMANCE   ·   Lighthouse
-──────────────────────────────────────────
-Desktop       →  98 / 100
-Mobile        →  89 / 100
-Acessibilidade→  100 / 100
-SEO           →  100 / 100
-──────────────────────────────────────────
-```
+Becos, fachadas, cenas noturnas, silhuetas contra a luz, reflexos no asfalto molhado. A camera nao como instrumento de registro, mas de leitura da cidade.
 
 <br>
 
@@ -91,22 +30,14 @@ SEO           →  100 / 100
 
 <br>
 
-## `// SOBRE`
+### Equipamento e Estilo
 
-<br>
-
-De dia, **analista de logística** — processos, fluxos, dados operacionais.
-
-Nas horas livres, fotógrafo nas ruas e entusiasta de **programação** e **inteligência artificial**. Acredito que tecnologia e arte caminham juntas — este portfólio é a prova disso.
-
-<br>
-
-```
-  01 · Logística & Processos
-  02 · Fotografia Urbana
-  03 · Desenvolvimento Web
-  04 · Inteligência Artificial
-```
+| | |
+|---|---|
+| Camera | Sony ZV-E10 |
+| Lente | 16-50mm f/3.5-5.6 OSS |
+| Base | Bauru, SP, Brasil |
+| Estilo | Street · Nocturne · Cotidiano · Arquitetura |
 
 <br>
 
@@ -114,15 +45,60 @@ Nas horas livres, fotógrafo nas ruas e entusiasta de **programação** e **inte
 
 <br>
 
-## `// REPOSITÓRIO`
+### O Site
+
+Portfolio construido do zero — nenhum template, nenhum CMS, nenhum framework. HTML, CSS e JavaScript puros em arquivo unico, conectado a um backend real.
 
 <br>
+
+| Camada | Tecnologia |
+|---|---|
+| Frontend | HTML · CSS · JavaScript |
+| Backend | Supabase — PostgreSQL + Storage |
+| Hospedagem | Vercel |
+| Tipografia | Cormorant Garamond · DM Sans |
+
+<br>
+
+**Lighthouse**
+
+| Metrica | Desktop | Mobile |
+|---|---|---|
+| Performance | 98 / 100 | 89 / 100 |
+| Acessibilidade | 100 / 100 | 100 / 100 |
+| SEO | 100 / 100 | 100 / 100 |
+
+<br>
+
+---
+
+<br>
+
+### Sobre
+
+De dia, analista de logistica — processos, fluxos e dados operacionais.
+
+Nas horas livres, fotografo nas ruas e entusiasta de programacao e inteligencia artificial. Acredito que tecnologia e arte caminham juntas — este portfolio e a prova disso.
+
+- Logistica e Processos
+- Fotografia Urbana
+- Desenvolvimento Web
+- Inteligencia Artificial e Automacao
+
+<br>
+
+---
+
+<br>
+
+### Estrutura
 
 ```
 /
-├── index.html            ← site completo
-├── vercel.json           ← deploy & headers
-├── og-image.png          ← preview redes sociais
+├── index.html        site completo
+├── vercel.json       deploy e headers de seguranca
+├── og-image.png      preview para redes sociais
+├── banner.svg        imagem do README
 ├── favicon.ico
 └── README.md
 ```
@@ -131,20 +107,8 @@ Nas horas livres, fotógrafo nas ruas e entusiasta de **programação** e **inte
 
 ---
 
-<br>
-
 <div align="center">
-
-```
-░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-```
-
-*feito com câmera na rua e código no terminal*
-
-`will.vills.ds.sants@hotmail.com`
-
-```
-░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-```
-
+<br>
+feito com camera na rua e codigo no terminal
+<br><br>
 </div>

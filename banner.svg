@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="280" viewBox="0 0 1200 280">
+  <rect width="1200" height="280" fill="#080808"/>
+  
+  <!-- linha topo accent -->
+  <rect x="60" y="40" width="120" height="1" fill="#c8c8c8" opacity="0.6"/>
+  <rect x="180" y="40" width="960" height="1" fill="#2a2a2a"/>
+  
+  <!-- Nome principal -->
+  <text x="60" y="110" font-family="Georgia, serif" font-size="58" font-weight="300" fill="#f5f5f5" letter-spacing="4">Willian Villares</text>
+  
+  <!-- Subtitulo -->
+  <text x="62" y="148" font-family="Georgia, serif" font-size="14" font-weight="300" fill="#888" letter-spacing="6">PHOTOGRAPHY</text>
+  
+  <!-- linha separadora curta -->
+  <rect x="60" y="168" width="60" height="1" fill="#555"/>
+  
+  <!-- Info -->
+  <text x="60" y="192" font-family="Georgia, serif" font-size="11" fill="#444" letter-spacing="3">FOTOGRAFIA URBANA  ·  BAURU — SP  ·  BRASIL</text>
+  <text x="60" y="212" font-family="Georgia, serif" font-size="11" fill="#333" letter-spacing="2">Sony ZV-E10  ·  street  ·  nocturne  ·  cotidiano</text>
+  
+  <!-- Marca d agua WV -->
+  <text x="990" y="210" font-family="Georgia, serif" font-size="160" font-weight="300" fill="#111" opacity="0.8" text-anchor="middle">WV</text>
+  
+  <!-- linha base -->
+  <rect x="60" y="248" width="1080" height="1" fill="#1a1a1a"/>
+</svg>
