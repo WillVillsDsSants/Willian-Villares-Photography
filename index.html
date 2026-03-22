@@ -765,7 +765,7 @@ footer{padding:44px 72px;border-top:1px solid var(--border);display:flex;align-i
 </head>
 <body>
 <div class="grain"></div>
-<button class="scroll-top-btn" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<button class="scroll-top-btn" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
 <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu"><span></span><span></span><span></span></button>
 
 <!-- FULLSCREEN MOBILE MENU -->
@@ -1040,9 +1040,9 @@ footer{padding:44px 72px;border-top:1px solid var(--border);display:flex;align-i
 <!-- ═══ LIGHTBOX ═══ -->
 <div class="lb-overlay" id="lightbox" style="display:none" onclick="lbBgClick(event)">
   <div class="lb-backdrop" id="lbBackdrop"><img id="lbBgImg" src="" alt=""></div>
-  <button class="lb-close" onclick="closeLb()">✕</button>
-  <button class="lb-nav lb-prev" onclick="event.stopPropagation();lbNav(-1)">‹</button>
-  <button class="lb-nav lb-next" onclick="event.stopPropagation();lbNav(1)">›</button>
+  <button class="lb-close" onclick="closeLb()" aria-label="Fechar lightbox">✕</button>
+  <button class="lb-nav lb-prev" onclick="event.stopPropagation();lbNav(-1)" aria-label="Foto anterior">‹</button>
+  <button class="lb-nav lb-next" onclick="event.stopPropagation();lbNav(1)" aria-label="Próxima foto">›</button>
   <div class="lb-wrap" id="lbWrap" onclick="event.stopPropagation()">
     <div class="lb-img-side">
       <img id="lbImg" src="" alt="">
@@ -1071,7 +1071,7 @@ footer{padding:44px 72px;border-top:1px solid var(--border);display:flex;align-i
       <div class="name">Willian<br>Villares</div>
       <div class="sub">Photography</div>
     </div>
-    <nav>
+    <nav aria-label="Navegação principal">
       <ul class="nav-list">
         <li><a href="#hero"      class="nav-link active"><span class="num">01</span><span class="sep">|</span>Início</a></li>
         <li><a href="#portfolio" class="nav-link"><span class="num">02</span><span class="sep">|</span>Portfólio</a></li>
@@ -1101,7 +1101,7 @@ footer{padding:44px 72px;border-top:1px solid var(--border);display:flex;align-i
       <div class="scroll-hint"><span>Scroll</span><div class="scroll-hint-line"></div></div>
     </section>
 
-    <main id="main-content">
+    <main id="main-content" role="main">
     <!-- PORTFOLIO -->
     <div id="portfolio">
       <div class="grid" id="photoGrid">
@@ -1159,7 +1159,7 @@ footer{padding:44px 72px;border-top:1px solid var(--border);display:flex;align-i
       </div>
       <div class="contact-simple">
         <div class="d-label">Email</div>
-        <div class="d-value"><a href="/cdn-cgi/l/email-protection#c99ea0a5a5e79fa0a5a5bae78dbae79aa8a7bdba89a1a6bda4a8a0a5e7aaa6a4"><span class="__cf_email__" data-cfemail="ffa8969393d1a99693938cd1bb8cd1ac9e918b8cbf97908b929e9693d19c9092">[email&#160;protected]</span></a></div>
+        <div class="d-value"><a href="mailto:Will.Vills.Ds.Sants@hotmail.com">Will.Vills.Ds.Sants@hotmail.com</a></div>
         <div class="d-label">Instagram</div>
         <div class="d-value"><a href="https://www.instagram.com/wvillares.photos/" target="_blank" rel="noopener">@wvillares.photos</a></div>
         <div class="d-label">Localização</div>
@@ -1182,7 +1182,7 @@ footer{padding:44px 72px;border-top:1px solid var(--border);display:flex;align-i
             <span class="cp-icon">✉</span>
             <span class="cp-info">
               <span class="cp-label">Email</span>
-              <span class="cp-val"><span class="__cf_email__" data-cfemail="fc8b959090d28a9590908fd2988fd28f9d92888fbc949388919d9590d29f9391">[email&#160;protected]</span></span>
+              <span class="cp-val">will.vills.ds.sants@hotmail.com</span>
             </span>
           </a>
           <a class="cp-item" href="https://www.instagram.com/wvillares.photos/" target="_blank" rel="noopener">
@@ -1199,7 +1199,7 @@ footer{padding:44px 72px;border-top:1px solid var(--border);display:flex;align-i
 </div>
 
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 'use strict'
 
 /* ═══════════════════════════════════════════
@@ -1507,7 +1507,7 @@ function renderSeriesSection() {
     const lo = "this.classList.add('loaded')"
     const pl = "var pl=document.getElementById('sgi-ph-" + i + "');if(pl)pl.classList.add('hidden')"
     const imgHtml = coverUrl
-      ? '<img src="' + esc(coverUrl) + '" loading="lazy" onload="' + lo + ';' + pl + '" onerror="' + lo + '">'
+      ? '<img src="' + esc(coverUrl) + '" alt="' + esc(s.name) + '" loading="lazy" onload="' + lo + ';' + pl + '" onerror="' + lo + '">'
       : '<div style="background:#1a1a1a;width:100%;aspect-ratio:3/2"></div>'
     html += '<div class="series-gi" data-sid="' + esc(s.id) + '">'
           + '<div class="series-gi-placeholder" id="sgi-ph-' + i + '"></div>'
