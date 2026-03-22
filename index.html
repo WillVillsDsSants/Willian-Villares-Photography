@@ -1651,7 +1651,17 @@ function applyPublicLayout(layout) {
   const grid = document.getElementById('photoGrid')
   if (!grid) return
 
-  // Reseta — NUNCA toca em opacity
+  // Usa clientWidth — sempre retorna largura CSS real independente de DPR
+  const vw = document.documentElement.clientWidth
+
+  // Mobile e tablet (≤1100px): reseta qualquer inline style e deixa o CSS agir
+  if (vw <= 1100) {
+    grid.style.cssText = ''
+    grid.querySelectorAll('.gi').forEach(el => { el.style.cssText = '' })
+    return
+  }
+
+  // Desktop: reseta e aplica layout escolhido
   grid.style.cssText = ''
   grid.querySelectorAll('.gi').forEach(el => {
     el.style.cssText = ''
@@ -1662,11 +1672,7 @@ function applyPublicLayout(layout) {
 
   const gap = layout === 'grid4' ? '2px' : '3px'
 
-  // Spotlight: grid com coluna da esquerda maior (2/3) e direita menor (1/3)
-  // Primeira foto na coluna grande, resto fluem normalmente
-  // Foto nunca é esticada — ocupa a largura da coluna e altura natural
   if (layout === 'spotlight') {
-    // Spotlight: coluna esquerda 500px (destaque), direita 250px (miniaturas sem gap entre elas)
     grid.style.display             = 'grid'
     grid.style.gridTemplateColumns = '500px 250px'
     grid.style.alignItems          = 'start'
@@ -1679,13 +1685,11 @@ function applyPublicLayout(layout) {
         el.style.gridColumn = '1'
         el.style.gridRow    = '1 / 999'
       } else {
-        el.style.gridColumn    = '2'
-        el.style.marginBottom  = gap
+        el.style.gridColumn   = '2'
+        el.style.marginBottom = gap
       }
     })
   } else {
-    // grid2 / grid3 / grid4 / masonry: CSS columns puro
-    // Foto ocupa 100% da largura da coluna, altura totalmente natural
     const cols = { grid2: 2, grid3: 3, grid4: 4, masonry: 3 }[layout] || 3
     grid.style.display     = 'block'
     grid.style.columnCount = String(cols)
@@ -1697,6 +1701,11 @@ function applyPublicLayout(layout) {
     })
   }
 }
+
+// Re-aplica ao redimensionar (rotação do celular etc)
+window.addEventListener('resize', function() {
+  applyPublicLayout(adminLayout)
+}, { passive: true })
 
 function toggleOrderMode() {
   orderMode = !orderMode
@@ -2652,12 +2661,9 @@ function initNavHighlight() {
     </div>
     <button onclick="closeSeriesModal()" style="background:none;border:1px solid #2a2a2a;color:#666;width:40px;height:40px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s" onmouseover="this.style.borderColor='#555';this.style.color='#ccc'" onmouseout="this.style.borderColor='#2a2a2a';this.style.color='#666'">✕</button>
   </div>
-
-  <!-- Grid area — padding lateral igual ao header -->
   <div style="position:absolute;top:72px;left:0;right:0;bottom:0;overflow-y:auto;padding:3px 20px">
     <div id="smGrid" style="column-gap:3px"></div>
   </div>
-
 </div>
 
 </body>
