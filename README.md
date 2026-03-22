@@ -1,90 +1,150 @@
-[README.md](https://github.com/user-attachments/files/26165034/README.md)
-# Willian Villares | Photography Portfolio
-
-> Portfólio pessoal de fotografia urbana — desenvolvido do zero como projeto pessoal.
-
----
-
-## 📷 Sobre o Hobby
-
-A fotografia entrou na minha vida como uma forma de olhar diferente para o cotidiano. Encontro nas ruas a minha maior inspiração — a arquitetura, o movimento, a luz que muda a cada hora, as pessoas e os espaços que geralmente passam despercebidos na pressa do dia a dia.
-
-Meu estilo é urbano: becos, fachadas, cenas noturnas, reflexos, silhuetas. Fotografo principalmente em **Bauru — SP** com uma **Sony ZV-E10**, explorando o que há de poético na vida comum das cidades brasileiras.
-
-A câmera se tornou uma extensão do olhar — cada clique é uma tentativa de registrar o que não volta.
-
----
-
-## 🌐 Sobre o Site
-
-Este portfólio foi construído como um projeto pessoal completo, do zero — design, backend e deploy.
-
-### Tecnologias utilizadas
-
-| Camada | Tecnologia |
-|---|---|
-| Frontend | HTML, CSS e JavaScript puros (single file) |
-| Backend / Banco de dados | [Supabase](https://supabase.com) — PostgreSQL + Storage |
-| Hospedagem | [Vercel](https://vercel.com) |
-| Fontes | Cormorant Garamond + DM Sans via Google Fonts |
-
-### Funcionalidades
-
-- **Portfólio dinâmico** — fotos carregadas do Supabase, com ordem e layout configuráveis
-- **Modo de layout** — grade 2, 3 ou 4 colunas, masonry e destaque, salvos no banco e refletidos no site em tempo real
-- **Séries/Coleções** — agrupamento de fotos por tema com modal de visualização
-- **Painel Admin** — gerenciamento completo de fotos, séries, categorias e hero via interface visual protegida por senha
-- **Ordenação por drag & drop** — reposicione as fotos arrastando e publique com um clique
-- **Modo destaque (Spotlight)** — layout com foto principal grande e miniaturas ao lado
-- **Lightbox** — visualização expandida com navegação por teclado e informações técnicas da foto
-- **SEO completo** — meta tags, Open Graph, Schema.org (Person, WebSite, ImageGallery)
-- **Performance otimizada** — Lighthouse 98/100 desktop, 89/100 mobile
-
-### Deploy
-
-O site roda na Vercel conectado a este repositório. Cada push na branch principal gera um deploy automático.
+[README(2).md](https://github.com/user-attachments/files/26165046/README.2.md)
+<div align="center">
 
 ```
-https://wvillares-photography.vercel.app
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 ```
 
+# W I L L I A N · V I L L A R E S
+
+### `FOTOGRAFIA URBANA · BAURU — SP · BRASIL`
+
+```
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+```
+
+[![Site](https://img.shields.io/badge/▸_PORTFÓLIO-wvillares--photography.vercel.app-c8c8c8?style=flat-square&labelColor=080808&color=2a2a2a)](https://wvillares-photography.vercel.app)
+[![Instagram](https://img.shields.io/badge/▸_INSTAGRAM-@wvillares.photos-c8c8c8?style=flat-square&labelColor=080808&color=2a2a2a)](https://www.instagram.com/wvillares.photos/)
+
+</div>
+
 ---
 
-## 👨‍💼 Sobre mim
+<br>
 
-Sou **analista de logística** de dia — trabalho com processos, fluxos e dados operacionais. Fora do trabalho, sou entusiasta de **programação e inteligência artificial**, sempre explorando como a tecnologia pode resolver problemas reais ou simplesmente criar coisas interessantes.
+```
+A cidade como ela é de verdade.
+```
 
-Este portfólio é um bom exemplo disso: nasceu da vontade de ter um espaço próprio para a fotografia e virou um projeto técnico completo — com backend, painel de administração, otimização de performance e deploy automatizado.
+Encontro nas ruas a minha maior inspiração. Cada clique é uma tentativa de registrar a beleza da metrópole — a arquitetura, o movimento, a autenticidade do cotidiano.
 
-**Interesses:**
-- 📦 Logística e otimização de processos
-- 📸 Fotografia urbana
-- 💻 Desenvolvimento web
-- 🤖 Inteligência Artificial e automação
+Fotografo o que passa despercebido na pressa do dia a dia. Becos, fachadas, cenas noturnas, silhuetas contra a luz, reflexos no asfalto molhado. A câmera como ferramenta de observação — não de registro, mas de *leitura* da cidade.
+
+<br>
 
 ---
 
-## 📁 Estrutura do repositório
+<br>
+
+<div align="center">
+
+```
+  EQUIPAMENTO          LOCALIZAÇÃO          ESTILO
+  ───────────────      ───────────────      ───────────────
+  Sony ZV-E10          Bauru — SP           Street
+  16-50mm OSS          Brasil               Nocturne
+  f/3.5–5.6                                 Cotidiano
+                                            Arquitetura
+```
+
+</div>
+
+<br>
+
+---
+
+<br>
+
+## `// O SITE`
+
+<br>
+
+Um portfólio construído do zero — design, lógica e infraestrutura. Nenhum template, nenhum CMS, nenhum framework. HTML, CSS e JavaScript puros, servidos como arquivo único.
+
+<br>
+
+```
+STACK
+──────────────────────────────────────────
+Frontend      →  HTML · CSS · JavaScript
+Backend       →  Supabase (PostgreSQL + Storage)
+Hospedagem    →  Vercel
+Tipografia    →  Cormorant Garamond · DM Sans
+──────────────────────────────────────────
+```
+
+<br>
+
+```
+PERFORMANCE   ·   Lighthouse
+──────────────────────────────────────────
+Desktop       →  98 / 100
+Mobile        →  89 / 100
+Acessibilidade→  100 / 100
+SEO           →  100 / 100
+──────────────────────────────────────────
+```
+
+<br>
+
+---
+
+<br>
+
+## `// SOBRE`
+
+<br>
+
+De dia, **analista de logística** — processos, fluxos, dados operacionais.
+
+Nas horas livres, fotógrafo nas ruas e entusiasta de **programação** e **inteligência artificial**. Acredito que tecnologia e arte caminham juntas — este portfólio é a prova disso.
+
+<br>
+
+```
+  01 · Logística & Processos
+  02 · Fotografia Urbana
+  03 · Desenvolvimento Web
+  04 · Inteligência Artificial
+```
+
+<br>
+
+---
+
+<br>
+
+## `// REPOSITÓRIO`
+
+<br>
 
 ```
 /
-├── index.html          # Site completo (frontend + JS inline)
-├── vercel.json         # Configurações de deploy e headers HTTP
-├── favicon.ico         # Ícone do site
-├── favicon-32x32.png
-├── apple-touch-icon.png
-├── og-image.png        # Imagem para preview em redes sociais
+├── index.html            ← site completo
+├── vercel.json           ← deploy & headers
+├── og-image.png          ← preview redes sociais
+├── favicon.ico
 └── README.md
 ```
 
----
-
-## 🚀 Como rodar localmente
-
-Basta abrir o `index.html` no browser. O site conecta automaticamente ao Supabase — as fotos e configurações são carregadas em tempo real.
-
-> O painel admin é acessível via atalho `Alt + A` ou 5 cliques no nome do rodapé.
+<br>
 
 ---
 
-*Feito com curiosidade, café e muitas horas de câmera na rua.*
+<br>
+
+<div align="center">
+
+```
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+```
+
+*feito com câmera na rua e código no terminal*
+
+`will.vills.ds.sants@hotmail.com`
+
+```
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+```
+
+</div>
