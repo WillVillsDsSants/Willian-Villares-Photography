@@ -86,6 +86,8 @@
   "jobTitle": "Fotógrafo Urbano",
   "description": "Willian Villares é fotógrafo urbano especializado em fotografia de rua, arquitetura, cotidiano e cidades. Com um olhar sensível e autoral, registra a beleza das ruas, becos, fachadas e a luz única das cidades brasileiras.",
   "image": "https://wvillares-photography.vercel.app/og-image.png"
+}
+</script>
 
 <!-- ═══ STRUCTURED DATA — WebSite ═══ -->
 <script type="application/ld+json">
@@ -178,9 +180,9 @@ input,textarea,select{outline:none;font-family:var(--fu)}
 .nav-link{font-size:.7rem;font-weight:300;text-transform:uppercase;letter-spacing:.22em;color:var(--dim);padding:9px 0;display:flex;align-items:center;gap:10px;transition:color .3s;position:relative}
 .nav-link .num{font-family:var(--fd);font-size:.63rem;color:var(--accent);font-style:italic;min-width:18px}
 .nav-link .sep{color:rgba(200,200,200,.18);font-size:.55rem;font-style:normal;letter-spacing:0}
-.nav-link::before{content:'';position:absolute;left:-40px;top:50%;transform:translateY(-50%) scaleX(0);transform-origin:left;width:28px;height:1px;background:var(--accent);transition:transform .35s}
+.nav-link::before{content:'';position:absolute;left:-40px;top:50%;transform:translateY(-50%);width:0;height:1px;background:var(--accent);transition:width .35s}
 .nav-link:hover,.nav-link.active{color:var(--text)}
-.nav-link:hover::before,.nav-link.active::before{transform:translateY(-50%) scaleX(1)}
+.nav-link:hover::before,.nav-link.active::before{width:28px}
 .sb-bottom{padding-top:32px;border-top:1px solid var(--border);position:relative}
 .contact-trigger{background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:6px 0;color:var(--dim);transition:color .3s}
 .contact-trigger:hover{color:var(--text)}
@@ -238,15 +240,15 @@ input,textarea,select{outline:none;font-family:var(--fu)}
 .hero-bg img{transform:scale(1.06);animation:zoomHero 14s var(--eout) forwards}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.88) 0%,rgba(8,8,8,.3) 55%,rgba(8,8,8,.08) 100%)}
 .hero-content{position:relative;z-index:2;max-width:700px}
-.hero-tag{font-size:.63rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;opacity:0;animation:fadeIn .9s .3s var(--eout) forwards}
-.hero-title{font-family:var(--fd);font-size:clamp(3.2rem,5.5vw,6rem);font-weight:300;line-height:.95;margin-bottom:28px;opacity:0;animation:fadeIn 1s .5s var(--eout) forwards}
+.hero-tag{font-size:.63rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;opacity:0;transform:translateY(20px);animation:fadeUp .9s .3s var(--eout) forwards}
+.hero-title{font-family:var(--fd);font-size:clamp(3.2rem,5.5vw,6rem);font-weight:300;line-height:.95;margin-bottom:28px;opacity:0;transform:translateY(30px);animation:fadeUp 1s .5s var(--eout) forwards}
 .hero-title em{font-style:italic;color:var(--accent)}
-.hero-desc{font-size:.85rem;font-weight:300;line-height:1.85;color:rgba(245,245,245,.6);max-width:420px;margin-bottom:40px;opacity:0;animation:fadeIn .9s .7s var(--eout) forwards}
-.hero-cta{display:inline-flex;align-items:center;gap:16px;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;opacity:0;animation:fadeIn .9s .9s var(--eout) forwards;transition:gap .3s}
+.hero-desc{font-size:.85rem;font-weight:300;line-height:1.85;color:rgba(245,245,245,.6);max-width:420px;margin-bottom:40px;opacity:0;transform:translateY(20px);animation:fadeUp .9s .7s var(--eout) forwards}
+.hero-cta{display:inline-flex;align-items:center;gap:16px;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;opacity:0;transform:translateY(20px);animation:fadeUp .9s .9s var(--eout) forwards;transition:gap .3s}
 .hero-cta:hover{gap:24px}
 .hero-cta-line{width:40px;height:1px;background:var(--accent);transition:width .3s}
 .hero-cta:hover .hero-cta-line{width:56px}
-.scroll-hint{position:absolute;right:72px;bottom:64px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;animation:fadeIn 1s 1.1s var(--eout) forwards}
+.scroll-hint{position:absolute;right:72px;bottom:64px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;animation:fadeUp 1s 1.1s var(--eout) forwards}
 .scroll-hint span{font-size:.56rem;letter-spacing:.25em;text-transform:uppercase;color:var(--dim);writing-mode:vertical-rl}
 .scroll-hint-line{width:1px;height:48px;background:linear-gradient(to bottom,var(--accent),transparent)}
 
@@ -1165,8 +1167,8 @@ footer{padding:44px 72px;border-top:1px solid var(--border);display:flex;align-i
       </div>
     </section>
 
-    <!-- FOOTER — clique 5x no nome para abrir admin -->
     </main>
+    <!-- FOOTER — clique 5x no nome para abrir admin -->
     <footer>
       <div class="f-name" id="footerName">Willian Villares</div>
       <div class="f-copy">© <span id="footerYear"></span> — Todos os direitos reservados</div>
@@ -1328,24 +1330,33 @@ async function loadAll() {
     sb.from('photos').select('*').order('sort_order').order('created_at'),
     sb.from('series').select('*').order('created_at'),
     sb.from('categories').select('*').order('name'),
-    sb.from('settings').select('value').eq('key','portfolio_layout').maybeSingle()
+    sb.from('settings').select('key,value').in('key', ['portfolio_layout','hero_url'])
   ])
   photos         = rp.data || []
   seriesList     = rs.data || []
   categoriesList = rc.data || []
-  // Aplica layout salvo
-  if (rl.data?.value) {
-    adminLayout = rl.data.value
-    // Marca botão ativo no admin
+
+  // Processa settings em 1 request
+  const settings = {}
+  ;(rl.data || []).forEach(r => { settings[r.key] = r.value })
+  if (settings.portfolio_layout) {
+    adminLayout = settings.portfolio_layout
     document.querySelectorAll('.lp-btn').forEach(b => {
       b.classList.toggle('active', b.dataset.layout === adminLayout)
     })
   }
+
+  // Renderiza portfolio primeiro (LCP)
   renderPortfolio()
   applyPublicLayout(adminLayout)
-  renderSeriesSection()
-  loadHeroBg()
-  if (authed) renderAdmin()
+
+  // Adia renders secundários para liberar o main thread
+  setTimeout(() => {
+    renderSeriesSection()
+    if (settings.hero_url) applyHeroBg(settings.hero_url)
+    else loadHeroBg()
+    if (authed) renderAdmin()
+  }, 0)
 }
 
 /* ═══════════════════════════════════════════
@@ -1452,8 +1463,7 @@ function renderPortfolio() {
   grid.innerHTML = filtered.slice(0, 7).map((p, i) => `
     <div class="gi" onclick="openLb(${i})">
       <div class="gi-placeholder" id="gip-${i}"></div>
-      <img src="${esc(p.url)}" alt="${esc(p.title||'')}"
-           ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'}
+      <img src="${esc(p.url)}" alt="${esc(p.title||'')}" loading="lazy"
            onload="this.classList.add('loaded');const pl=document.getElementById('gip-${i}');if(pl)pl.classList.add('hidden')"
            onerror="this.classList.add('loaded')">
       <div class="ov">
@@ -1499,7 +1509,7 @@ function renderSeriesSection() {
     const lo = "this.classList.add('loaded')"
     const pl = "var pl=document.getElementById('sgi-ph-" + i + "');if(pl)pl.classList.add('hidden')"
     const imgHtml = coverUrl
-      ? '<img src="' + esc(coverUrl) + '" alt="' + esc(s.name) + '" loading="lazy" onload="' + lo + ';' + pl + '" onerror="' + lo + '">'
+      ? '<img src="' + esc(coverUrl) + '" loading="lazy" onload="' + lo + ';' + pl + '" onerror="' + lo + '">'
       : '<div style="background:#1a1a1a;width:100%;aspect-ratio:3/2"></div>'
     html += '<div class="series-gi" data-sid="' + esc(s.id) + '">'
           + '<div class="series-gi-placeholder" id="sgi-ph-' + i + '"></div>'
@@ -1657,17 +1667,14 @@ function applyPublicLayout(layout) {
   const grid = document.getElementById('photoGrid')
   if (!grid) return
 
-  // Usa clientWidth — sempre retorna largura CSS real independente de DPR
   const vw = document.documentElement.clientWidth
-
-  // Mobile e tablet (≤1100px): reseta qualquer inline style e deixa o CSS agir
   if (vw <= 1100) {
     grid.style.cssText = ''
     grid.querySelectorAll('.gi').forEach(el => { el.style.cssText = '' })
     return
   }
 
-  // Desktop: reseta e aplica layout escolhido
+  // Reseta — NUNCA toca em opacity
   grid.style.cssText = ''
   grid.querySelectorAll('.gi').forEach(el => {
     el.style.cssText = ''
@@ -1678,7 +1685,11 @@ function applyPublicLayout(layout) {
 
   const gap = layout === 'grid4' ? '2px' : '3px'
 
+  // Spotlight: grid com coluna da esquerda maior (2/3) e direita menor (1/3)
+  // Primeira foto na coluna grande, resto fluem normalmente
+  // Foto nunca é esticada — ocupa a largura da coluna e altura natural
   if (layout === 'spotlight') {
+    // Spotlight: coluna esquerda 500px (destaque), direita 250px (miniaturas sem gap entre elas)
     grid.style.display             = 'grid'
     grid.style.gridTemplateColumns = '500px 250px'
     grid.style.alignItems          = 'start'
@@ -1691,11 +1702,13 @@ function applyPublicLayout(layout) {
         el.style.gridColumn = '1'
         el.style.gridRow    = '1 / 999'
       } else {
-        el.style.gridColumn   = '2'
-        el.style.marginBottom = gap
+        el.style.gridColumn    = '2'
+        el.style.marginBottom  = gap
       }
     })
   } else {
+    // grid2 / grid3 / grid4 / masonry: CSS columns puro
+    // Foto ocupa 100% da largura da coluna, altura totalmente natural
     const cols = { grid2: 2, grid3: 3, grid4: 4, masonry: 3 }[layout] || 3
     grid.style.display     = 'block'
     grid.style.columnCount = String(cols)
@@ -1707,11 +1720,6 @@ function applyPublicLayout(layout) {
     })
   }
 }
-
-// Re-aplica ao redimensionar (rotação do celular etc)
-window.addEventListener('resize', function() {
-  applyPublicLayout(adminLayout)
-}, { passive: true })
 
 function toggleOrderMode() {
   orderMode = !orderMode
@@ -2665,12 +2673,6 @@ function initNavHighlight() {
       <div id="smTitle" style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#f5f5f5;font-weight:300;line-height:1"></div>
       <div id="smCaption" style="font-size:.55rem;letter-spacing:.2em;color:#aaa;text-transform:uppercase"></div>
     </div>
-    <button onclick="closeSeriesModal()" style="background:none;border:1px solid #2a2a2a;color:#666;width:40px;height:40px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s" onmouseover="this.style.borderColor='#555';this.style.color='#ccc'" onmouseout="this.style.borderColor='#2a2a2a';this.style.color='#666'">✕</button>
-  </div>
-  <div style="position:absolute;top:72px;left:0;right:0;bottom:0;overflow-y:auto;padding:3px 20px">
-    <div id="smGrid" style="column-gap:3px"></div>
-  </div>
-</div>
-
+    <button onclick="closeSeriesModal()" style="background:none;border:1px solid #2a2a2a;color:#666;width:40px;height:40px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s" onmouseover="this.style.borderColor='#555';this.style.color='#ccc'" onmouseout="this.style.borderColor='#2a2a2a';this.style.color='#666
 </body>
 </html>
