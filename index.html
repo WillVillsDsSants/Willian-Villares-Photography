@@ -2,9 +2,9 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23080808'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='26' font-weight='300' fill='%23c8c8c8' letter-spacing='1'>WV</text></svg>">
+  <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23080808'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='26' font-weight='300' fill='%23c8c8c8' letter-spacing='1'>WV</text></svg>">
+  <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23080808'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='26' font-weight='300' fill='%23c8c8c8' letter-spacing='1'>WV</text></svg>">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- ═══════════════════════════════════════════
@@ -262,8 +262,8 @@ input,textarea,select{outline:none;font-family:var(--fu)}
 .filter-btn.active,.filter-btn:hover{color:var(--text)}
 .filter-btn.active::after,.filter-btn:hover::after{width:100%}
 
-.grid{columns:3;column-gap:3px}
-.gi{position:relative;overflow:hidden;background:var(--bg-card);break-inside:avoid;margin-bottom:3px;cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.gi{position:relative;overflow:hidden;background:var(--bg-card);cursor:pointer}
 .gi img{display:block;width:100%;height:auto;transition:transform 1.4s cubic-bezier(0.25,0.46,0.45,0.94),opacity .8s ease;opacity:0}
 .gi img.loaded{opacity:1}
 .gi:hover img{transform:scale(1.03)}
@@ -297,13 +297,16 @@ input,textarea,select{outline:none;font-family:var(--fu)}
 .series-gi:hover img{transform:scale(1.03)}
 .series-gi .ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.94) 0%,rgba(8,8,8,.4) 55%,rgba(8,8,8,.05) 100%);opacity:0;transition:opacity .5s;display:flex;flex-direction:column;justify-content:flex-end;padding:20px}
 .series-gi:hover .ov{opacity:1}
-.series-gi .ov-title{opacity:0;transform:translateY(12px);transition:all .4s .05s}
-.series-gi .ov-desc{opacity:0;transform:translateY(8px);transition:all .4s .12s}
+.series-gi .ov-top{position:absolute;top:0;left:0;right:0;padding:18px 22px;display:flex;justify-content:space-between}
+.series-gi .ov-icon{width:34px;height:34px;border:1px solid rgba(255,255,255,.18);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;opacity:0;transform:scale(.7);transition:all .35s .08s}
+.series-gi:hover .ov-icon{opacity:1;transform:scale(1)}
+.series-gi .ov-title{font-family:var(--fd);font-size:1.4rem;font-weight:300;color:var(--text);opacity:0;transform:translateY(12px);transition:all .4s .1s}
 .series-gi:hover .ov-title{opacity:1;transform:translateY(0)}
+.series-gi .ov-desc{font-size:.73rem;font-weight:300;color:rgba(245,245,245,.6);line-height:1.5;margin-top:5px;opacity:0;transform:translateY(10px);transition:all .4s .14s}
 .series-gi:hover .ov-desc{opacity:1;transform:translateY(0)}
-.series-gi .ov-title{font-family:var(--fd);font-size:1.4rem;font-weight:300;color:var(--text)}
-.series-gi .ov-desc{font-size:.68rem;color:rgba(245,245,245,.7);margin-top:4px;letter-spacing:.04em}
-.series-gi .ov-count{position:absolute;top:14px;right:14px;font-size:.52rem;letter-spacing:.2em;color:var(--accent);background:rgba(8,8,8,.7);padding:4px 10px;border:1px solid rgba(200,200,200,.12)}
+.series-gi .ov-div{width:26px;height:1px;background:var(--accent);margin:10px 0;transform:scaleX(0);transform-origin:left;opacity:0;transition:all .4s .18s}
+.series-gi:hover .ov-div{opacity:1;transform:scaleX(1)}
+.series-gi .ov-count{position:absolute;top:14px;left:14px;font-size:.52rem;letter-spacing:.2em;color:var(--accent);background:rgba(8,8,8,.7);padding:4px 10px;border:1px solid rgba(200,200,200,.12)}
 .series-empty{padding:80px 0;text-align:center;font-family:var(--fd);font-size:1.1rem;font-style:italic;color:var(--dim)}
 
 /* ABOUT */
@@ -365,7 +368,7 @@ footer{padding:44px 72px;border-top:1px solid var(--border);display:flex;align-i
 
 /* ═══════════════ ADMIN ═══════════════ */
 .overlay-bg{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:500;display:flex;align-items:center;justify-content:center;animation:fadeIn .3s}
-.admin-panel{background:var(--bg-panel);border:1px solid var(--border);width:94vw;max-width:1160px;max-height:92vh;display:flex;flex-direction:column;overflow:hidden}
+.admin-panel{background:var(--bg-panel);border:1px solid var(--border);width:96vw;max-width:1600px;max-height:94vh;display:flex;flex-direction:column;overflow:hidden}
 .admin-top{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:10px}
 .admin-title{font-family:var(--fd);font-size:1.2rem;font-weight:300}
 .admin-tabs{display:flex}
@@ -510,7 +513,7 @@ footer{padding:44px 72px;border-top:1px solid var(--border);display:flex;align-i
   .contact-pop{position:fixed;bottom:80px;top:auto;left:50%;right:auto;transform:translateX(-50%);width:90vw;max-width:340px;z-index:500;animation:none;opacity:0;transition:opacity .25s}.contact-pop.open{opacity:1}
   .styles-grid{grid-template-columns:1fr 1fr}
 
-  .grid{columns:2;column-gap:3px}
+  .grid{grid-template-columns:repeat(2,1fr)}
   .series-grid{columns:2;column-gap:3px}
 
   .sec-header{flex-direction:column;align-items:flex-start;gap:10px}
@@ -542,7 +545,7 @@ footer{padding:44px 72px;border-top:1px solid var(--border);display:flex;align-i
   .contact-grid{grid-template-columns:1fr;gap:36px}
   .contact-simple{max-width:100%}
 
-  .grid{columns:2;column-gap:2px}
+  .grid{grid-template-columns:repeat(2,1fr);gap:2px}
   .series-grid{columns:2;column-gap:2px}
 
   /* Lightbox */
@@ -575,7 +578,7 @@ footer{padding:44px 72px;border-top:1px solid var(--border);display:flex;align-i
   .styles-grid{grid-template-columns:1fr;gap:1px}
   .style-card{padding:28px 20px}
 
-  .grid{columns:1}
+  .grid{grid-template-columns:1fr}
   .series-grid{columns:1}
 
   .f-row{grid-template-columns:1fr}
@@ -631,6 +634,128 @@ footer{padding:44px 72px;border-top:1px solid var(--border);display:flex;align-i
   pointer-events:all;
 }
 .scroll-top-btn:hover{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.4);transform:translateY(-2px)}
+
+/* ── Layout Picker ─────────────────────────────────────── */
+.layout-picker{display:flex;gap:3px;background:rgba(255,255,255,.03);border:1px solid var(--border-l);padding:4px;border-radius:3px}
+.lp-btn{background:none;border:none;color:var(--dim);cursor:pointer;width:36px;height:32px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:2px;transition:all .18s;position:relative}
+.lp-btn:hover{background:rgba(255,255,255,.06);color:var(--text)}
+.lp-btn.active{background:rgba(200,200,200,.08);color:var(--accent);border:1px solid rgba(200,200,200,.15)}
+.lp-btn svg{width:16px;height:16px;fill:currentColor;flex-shrink:0}
+.lp-btn span{font-size:.42rem;letter-spacing:.08em;text-transform:uppercase;opacity:.7;line-height:1}
+.lp-btn.saving{animation:lpPulse .6s ease infinite}
+@keyframes lpPulse{0%,100%{opacity:1}50%{opacity:.4}}
+.lp-saved{color:#4caf50!important;animation:lpBounce .4s ease}
+@keyframes lpBounce{0%{transform:scale(.8)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+
+/* ── Order Mode Button ─────────────────────────────────── */
+.btn-order{display:flex;align-items:center;gap:6px;background:none;border:1px solid var(--border-l);color:var(--dim);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;padding:0 12px;height:40px;cursor:pointer;transition:all .2s;border-radius:2px}
+.btn-order svg{width:14px;height:14px;fill:currentColor;transition:transform .3s}
+.btn-order:hover{border-color:rgba(255,255,255,.2);color:var(--text)}
+.btn-order.active{border-color:var(--accent);color:var(--accent);background:rgba(200,200,200,.04)}
+.btn-order.active svg{transform:rotate(180deg)}
+
+/* ── Order Hint Bar ────────────────────────────────────── */
+#orderHint{background:rgba(200,200,200,.04);border:1px solid var(--border-l);border-left:2px solid var(--accent);padding:10px 16px;margin-bottom:16px;display:flex;align-items:center;gap:12px;animation:slideDown .25s ease}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.order-hint-text{font-size:.62rem;color:var(--dim);letter-spacing:.1em;flex:1}
+.order-hint-text strong{color:var(--text)}
+.btn-save-order{background:var(--accent);color:#080808;border:none;padding:6px 14px;cursor:pointer;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;font-weight:600;transition:opacity .2s}
+.btn-save-order:hover{opacity:.85}
+.btn-save-order.saving{opacity:.5;pointer-events:none}
+.btn-cancel-order{background:none;border:1px solid var(--border-l);color:var(--dim);padding:6px 12px;cursor:pointer;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;transition:all .2s}
+.btn-cancel-order:hover{border-color:rgba(255,255,255,.2);color:var(--text)}
+
+/* ── Admin Grid Layouts ─────────────────────────────────── */
+#photosTable .adm-grid{display:grid;gap:6px;animation:gridFadeIn .25s ease}
+@keyframes gridFadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+/* Usa minmax para se adaptar à largura real do painel admin */
+#photosTable .adm-grid.grid3{grid-template-columns:repeat(auto-fill,minmax(max(180px,20vw),1fr))}
+#photosTable .adm-grid.grid2{grid-template-columns:repeat(auto-fill,minmax(max(260px,28vw),1fr))}
+#photosTable .adm-grid.grid4{grid-template-columns:repeat(auto-fill,minmax(max(140px,14vw),1fr))}
+#photosTable .adm-grid.masonry{columns:3;column-gap:6px;display:block}
+#photosTable .adm-grid.masonry .adm-card{break-inside:avoid;margin-bottom:6px;display:inline-block;width:100%}
+#photosTable .adm-grid.spotlight{grid-template-columns:repeat(3,1fr)}
+#photosTable .adm-grid.spotlight .adm-card:first-child{grid-column:1/3;grid-row:1/3}
+#photosTable .adm-grid.spotlight .adm-card:first-child .adm-thumb{aspect-ratio:unset;height:100%}
+@media(min-width:1600px){
+  #photosTable .adm-grid.masonry{columns:4}
+}
+@media(min-width:2200px){
+  #photosTable .adm-grid.grid3{grid-template-columns:repeat(auto-fill,minmax(max(220px,16vw),1fr))}
+  #photosTable .adm-grid.grid4{grid-template-columns:repeat(auto-fill,minmax(max(160px,11vw),1fr))}
+  #photosTable .adm-grid.masonry{columns:5}
+}
+
+/* ── Admin Photo Card ──────────────────────────────────── */
+.adm-card{position:relative;background:rgba(255,255,255,.02);border:1px solid var(--border);overflow:hidden;transition:border-color .2s,transform .15s,box-shadow .2s}
+.adm-card:hover{border-color:rgba(255,255,255,.12);box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.adm-card .adm-thumb{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .3s}
+.adm-card:hover .adm-thumb{transform:scale(1.02)}
+.adm-card.masonry-card .adm-thumb{aspect-ratio:unset;height:auto}
+.adm-card .adm-info{padding:8px 10px;border-top:1px solid var(--border)}
+.adm-card .adm-title{font-size:.7rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px}
+.adm-card .adm-meta{font-size:.58rem;color:var(--dim);letter-spacing:.08em}
+.adm-card .adm-actions{display:flex;gap:4px;padding:6px 10px 8px}
+.adm-card .btn-e,.adm-card .btn-d{font-size:.58rem;padding:4px 10px}
+/* drag handle */
+.adm-card .drag-handle{position:absolute;top:0;left:0;right:0;height:32px;background:linear-gradient(rgba(0,0,0,.7),transparent);color:rgba(255,255,255,.6);font-size:1rem;display:none;align-items:center;justify-content:center;cursor:grab;letter-spacing:.15em;transition:all .2s}
+.adm-card .drag-handle:hover{color:#fff;background:linear-gradient(rgba(0,0,0,.85),transparent)}
+.adm-card .drag-num{position:absolute;top:6px;right:8px;font-size:.55rem;color:rgba(255,255,255,.4);letter-spacing:.1em;display:none}
+/* order mode */
+.order-mode .adm-card{cursor:grab;border-color:rgba(255,255,255,.08)}
+.order-mode .adm-card .drag-handle{display:flex}
+.order-mode .adm-card .drag-num{display:block}
+.order-mode .adm-card:active{cursor:grabbing}
+.order-mode .adm-card:hover{border-color:rgba(200,200,200,.25)}
+.adm-card.dragging{opacity:.35;transform:scale(.97);box-shadow:none}
+.adm-card.drag-over{border-color:var(--accent)!important;box-shadow:0 0 0 1px var(--accent),0 0 24px rgba(200,200,200,.08);transform:scale(1.01)}
+/* drop line for list */
+.adm-card.drop-before::before{content:'';position:absolute;top:-4px;left:0;right:0;height:2px;background:var(--accent);z-index:10}
+
+/* ── Admin List Layout ─────────────────────────────────── */
+#photosTable .adm-list{display:flex;flex-direction:column;animation:gridFadeIn .25s ease}
+.adm-list-row{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);transition:background .15s}
+.adm-list-row:hover{background:rgba(255,255,255,.025)}
+.adm-list-row .drag-handle{font-size:1.1rem;color:var(--dim);padding:0 2px;cursor:grab;display:none;user-select:none;transition:color .15s;flex-shrink:0}
+.adm-list-row .drag-handle:hover{color:var(--text)}
+.order-mode .adm-list-row .drag-handle{display:block}
+.order-mode .adm-list-row{cursor:grab}
+.adm-list-row .adm-num{font-size:.58rem;color:var(--dim);width:20px;text-align:right;flex-shrink:0;display:none}
+.order-mode .adm-list-row .adm-num{display:block}
+.adm-list-row .adm-thumb-sm{width:64px;height:44px;object-fit:cover;border:1px solid var(--border);flex-shrink:0;transition:transform .2s}
+.adm-list-row:hover .adm-thumb-sm{transform:scale(1.04)}
+.adm-list-row .adm-linfo{flex:1;min-width:0}
+.adm-list-row .adm-title{font-size:.73rem;color:var(--text)}
+.adm-list-row .adm-meta{font-size:.58rem;color:var(--dim);letter-spacing:.07em;margin-top:1px}
+.adm-list-row .adm-actions{display:flex;gap:4px;flex-shrink:0}
+.adm-list-row.dragging{opacity:.35;background:rgba(255,255,255,.01)}
+.adm-list-row.drag-over{border-top:2px solid var(--accent);background:rgba(200,200,200,.03)}
+
+/* ── Series Modal Photo Cards ─────────────────────────── */
+.sm-photo-wrap{position:relative;overflow:hidden;background:var(--bg-card);break-inside:avoid;margin-bottom:3px;cursor:pointer}
+.sm-photo-wrap img{display:block;width:100%;height:auto;transition:transform 1.4s cubic-bezier(0.25,0.46,0.45,0.94),opacity .6s ease;opacity:0}
+.sm-photo-wrap img.loaded{opacity:1}
+.sm-photo-wrap:hover img{transform:scale(1.03)}
+.sm-photo-wrap .ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.94) 0%,rgba(8,8,8,.4) 55%,rgba(8,8,8,.05) 100%);opacity:0;transition:opacity .5s;display:flex;flex-direction:column;justify-content:flex-end;padding:20px}
+.sm-photo-wrap:hover .ov{opacity:1}
+.sm-photo-wrap .ov-top{position:absolute;top:0;left:0;right:0;padding:18px 22px;display:flex;justify-content:space-between}
+.sm-photo-wrap .ov-cat{display:inline-flex;align-items:center;justify-content:center;font-size:.54rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);background:rgba(8,8,8,.65);padding:5px 12px;border:1px solid rgba(200,200,200,.15);backdrop-filter:blur(6px);transform:translateY(-6px);opacity:0;transition:all .4s .05s}
+.sm-photo-wrap:hover .ov-cat{opacity:1;transform:translateY(0)}
+.sm-photo-wrap .ov-icon{width:34px;height:34px;border:1px solid rgba(255,255,255,.18);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;opacity:0;transform:scale(.7);transition:all .35s .08s}
+.sm-photo-wrap:hover .ov-icon{opacity:1;transform:scale(1)}
+.sm-photo-wrap .ov-title{font-family:var(--fd);font-size:1.4rem;font-weight:300;opacity:0;transform:translateY(12px);transition:all .4s .1s}
+.sm-photo-wrap:hover .ov-title{opacity:1;transform:translateY(0)}
+.sm-photo-wrap .ov-caption{font-size:.73rem;font-weight:300;color:rgba(245,245,245,.6);line-height:1.5;margin-top:5px;opacity:0;transform:translateY(10px);transition:all .4s .14s}
+.sm-photo-wrap:hover .ov-caption{opacity:1;transform:translateY(0)}
+.sm-photo-wrap .ov-div{width:26px;height:1px;background:var(--accent);margin:10px 0;transform:scaleX(0);transform-origin:left;opacity:0;transition:all .4s .18s}
+.sm-photo-wrap:hover .ov-div{opacity:1;transform:scaleX(1)}
+
+/* ── Series Modal Fade In ──────────────────────────────── */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ── Layout ativo: foto no seu formato original ── */
+.gi.layout-active img{width:100%;height:auto}
+.gi.layout-masonry{break-inside:avoid}
 </style>
 </head>
 <body>
@@ -678,7 +803,6 @@ footer{padding:44px 72px;border-top:1px solid var(--border);display:flex;align-i
         <div class="admin-tabs">
           <button class="a-tab active" id="tabBtnPhotos"   onclick="switchTab('photos')">Fotos <span id="cntPhotos"></span></button>
           <button class="a-tab"        id="tabBtnSeries"   onclick="switchTab('series')">Séries <span id="cntSeries"></span></button>
-          <button class="a-tab"        id="tabBtnMessages" onclick="switchTab('messages')">Mensagens <span id="cntMessages"></span></button>
           <button class="a-tab"        id="tabBtnCategories" onclick="switchTab('categories')">Categorias <span id="cntCategories"></span></button>
           <button class="a-tab"        id="tabBtnHero"     onclick="switchTab('hero')">Foto Hero</button>
         </div>
@@ -689,7 +813,43 @@ footer{padding:44px 72px;border-top:1px solid var(--border);display:flex;align-i
       <div id="tabPhotos">
         <div class="a-toolbar">
           <span class="a-t-title">Fotos do Portfólio</span>
-          <button class="btn-add" onclick="openPhotoForm(null)">+ Nova Foto</button>
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <div style="font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);padding:0 2px">Layout do site</div>
+              <div class="layout-picker" id="layoutPicker">
+                <button class="lp-btn active" data-layout="grid3" onclick="setAdminLayout('grid3',this)" title="Grade 3 colunas">
+                  <svg viewBox="0 0 16 16"><rect x="0" y="0" width="4" height="4"/><rect x="6" y="0" width="4" height="4"/><rect x="12" y="0" width="4" height="4"/><rect x="0" y="6" width="4" height="4"/><rect x="6" y="6" width="4" height="4"/><rect x="12" y="6" width="4" height="4"/></svg>
+                  <span>3 col</span>
+                </button>
+                <button class="lp-btn" data-layout="grid2" onclick="setAdminLayout('grid2',this)" title="Grade 2 colunas">
+                  <svg viewBox="0 0 16 16"><rect x="0" y="0" width="6" height="5"/><rect x="10" y="0" width="6" height="5"/><rect x="0" y="7" width="6" height="5"/><rect x="10" y="7" width="6" height="5"/></svg>
+                  <span>2 col</span>
+                </button>
+                <button class="lp-btn" data-layout="grid4" onclick="setAdminLayout('grid4',this)" title="Grade 4 colunas">
+                  <svg viewBox="0 0 16 16"><rect x="0" y="0" width="3" height="4"/><rect x="4.3" y="0" width="3" height="4"/><rect x="8.6" y="0" width="3" height="4"/><rect x="12.9" y="0" width="3" height="4"/><rect x="0" y="6" width="3" height="4"/><rect x="4.3" y="6" width="3" height="4"/><rect x="8.6" y="6" width="3" height="4"/><rect x="12.9" y="6" width="3" height="4"/></svg>
+                  <span>4 col</span>
+                </button>
+                <button class="lp-btn" data-layout="masonry" onclick="setAdminLayout('masonry',this)" title="Masonry — alturas variadas">
+                  <svg viewBox="0 0 16 16"><rect x="0" y="0" width="4" height="7"/><rect x="6" y="0" width="4" height="4"/><rect x="12" y="0" width="4" height="10"/><rect x="6" y="6" width="4" height="7"/><rect x="0" y="9" width="4" height="5"/></svg>
+                  <span>Livre</span>
+                </button>
+                <button class="lp-btn" data-layout="spotlight" onclick="setAdminLayout('spotlight',this)" title="Destaque — 1 foto grande">
+                  <svg viewBox="0 0 16 16"><rect x="0" y="0" width="9" height="9"/><rect x="11" y="0" width="5" height="4"/><rect x="11" y="6" width="5" height="4"/><rect x="0" y="11" width="5" height="5"/><rect x="6" y="11" width="5" height="5"/><rect x="12" y="11" width="4" height="5"/></svg>
+                  <span>Destaque</span>
+                </button>
+              </div>
+            </div>
+            <button class="btn-order" id="btnOrder" onclick="toggleOrderMode()">
+              <svg viewBox="0 0 14 14" width="14" height="14" fill="currentColor"><path d="M2 3h10v1.5H2zm0 3h10v1.5H2zm0 3h10v1.5H2z"/><path d="M10 1l2.5 2.5L10 6V1zM4 8l-2.5 2.5L4 13V8z"/></svg>
+              Ordenar Fotos
+            </button>
+            <button class="btn-add" onclick="openPhotoForm(null)">+ Nova Foto</button>
+          </div>
+        </div>
+        <div id="orderHint" style="display:none">
+          <span class="order-hint-text">⠿ <strong>Modo ordenação ativo</strong> — arraste as fotos para reposicionar. A ordem será salva no site ao clicar em Publicar.</span>
+          <button class="btn-save-order" id="btnSaveOrder" onclick="saveOrder()">Publicar Ordem</button>
+          <button class="btn-cancel-order" onclick="cancelOrderMode()">Cancelar</button>
         </div>
         <div id="photosTable"></div>
       </div>
@@ -938,9 +1098,6 @@ footer{padding:44px 72px;border-top:1px solid var(--border);display:flex;align-i
 
     <!-- PORTFOLIO -->
     <div id="portfolio">
-      <div class="filter-bar" id="filterBar">
-        <button class="filter-btn active" data-cat="Todos" onclick="setFilter(this)">Todos</button>
-      </div>
       <div class="grid" id="photoGrid">
         <div class="grid-empty">Carregando…</div>
       </div>
@@ -1068,8 +1225,6 @@ const ADMIN_PASS = '28099455-Wi'
 let photos      = []
 let seriesList  = []
 let categoriesList = []
-let messages    = []
-let curFilter   = 'Todos'
 let editPhotoId = null
 let editSeriesId= null
 let uploadedUrl = ''   // URL após upload para Storage
@@ -1164,17 +1319,25 @@ if (document.readyState === 'loading') {
    DATA LOADING
 ═══════════════════════════════════════════ */
 async function loadAll() {
-  const [rp, rs, rm, rc] = await Promise.all([
+  const [rp, rs, rc, rl] = await Promise.all([
     sb.from('photos').select('*').order('sort_order').order('created_at'),
     sb.from('series').select('*').order('created_at'),
-    sb.from('messages').select('*').order('created_at'),
-    sb.from('categories').select('*').order('name')
+    sb.from('categories').select('*').order('name'),
+    sb.from('settings').select('value').eq('key','portfolio_layout').maybeSingle()
   ])
-  photos          = rp.data || []
-  seriesList      = rs.data || []
-  messages        = rm.data || []
-  categoriesList  = rc.data || []
+  photos         = rp.data || []
+  seriesList     = rs.data || []
+  categoriesList = rc.data || []
+  // Aplica layout salvo
+  if (rl.data?.value) {
+    adminLayout = rl.data.value
+    // Marca botão ativo no admin
+    document.querySelectorAll('.lp-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.layout === adminLayout)
+    })
+  }
   renderPortfolio()
+  applyPublicLayout(adminLayout)
   renderSeriesSection()
   loadHeroBg()
   if (authed) renderAdmin()
@@ -1270,15 +1433,8 @@ async function handleHeroUpload(e) {
    PORTFOLIO RENDER
 ═══════════════════════════════════════════ */
 function renderPortfolio() {
-  // Filter bar
-  const cats = ['Todos', ...new Set(photos.map(p => p.category).filter(Boolean))]
-  const bar  = document.getElementById('filterBar')
-  bar.innerHTML = cats.map(c =>
-    `<button class="filter-btn${c === curFilter ? ' active' : ''}" data-cat="${c}" onclick="setFilter(this)">${c}</button>`
-  ).join('')
-
-  // Grid
-  const filtered = curFilter === 'Todos' ? photos : photos.filter(p => p.category === curFilter)
+  // Grid — sem filtro de categoria
+  const filtered = photos
   const grid = document.getElementById('photoGrid')
 
   if (!filtered.length) {
@@ -1313,15 +1469,13 @@ function renderPortfolio() {
       </div>
     </div>`).join('')
 
+  // Aplica layout DEPOIS que o HTML está no DOM
+  applyPublicLayout(adminLayout)
   refreshHoverTargets()
 }
 
-function setFilter(btn) {
-  curFilter = btn.dataset.cat
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'))
-  btn.classList.add('active')
-  renderPortfolio()
-}
+
+
 
 /* ═══════════════════════════════════════════
    SERIES RENDER
@@ -1345,21 +1499,10 @@ function renderSeriesSection() {
           + '<div class="series-gi-placeholder" id="sgi-ph-' + i + '"></div>'
           + imgHtml
           + '<div class="ov">'
-          +   '<div class="ov-top">'
-          +     (s.category ? '<div class="ov-cat">' + esc(s.category) + '</div>' : '<div class="ov-cat"></div>')
-          +     '<div class="ov-icon">↗</div>'
-          +   '</div>'
+          +   '<div class="ov-top"><div></div><div class="ov-icon">↗</div></div>'
           +   '<div class="ov-title">' + esc(s.name) + '</div>'
-          +   (s.description ? '<div class="ov-caption">' + esc(s.description) + '</div>' : '')
+          +   (s.description ? '<div class="ov-desc">' + esc(s.description) + '</div>' : '')
           +   '<div class="ov-div"></div>'
-          +   '<div class="ov-specs">'
-          +     (s.camera   ? '<div class="spec"><span class="sl">Câmera</span><span class="sv">' + esc(s.camera)   + '</span></div>' : '')
-          +     (s.lens     ? '<div class="spec"><span class="sl">Lente</span><span class="sv">'  + esc(s.lens)     + '</span></div>' : '')
-          +   '</div>'
-          +   '<div class="ov-date">'
-          +     (s.date     ? '<span>' + esc(s.date)     + '</span>' : '')
-          +     (s.location ? '<span>' + esc(s.location) + '</span>' : '')
-          +   '</div>'
           + '</div>'
           + '<div class="ov-count">' + n + ' foto' + (n !== 1 ? 's' : '') + '</div>'
           + '</div>'
@@ -1377,34 +1520,65 @@ function openSeriesModal(sid) {
   if (!s) return
   const sp = photos.filter(p => p.series_id === sid)
   smLbPhotos = sp
+
+  // ── Header: título da SÉRIE + legenda da SÉRIE ──────────
   document.getElementById('smTitle').textContent = s.name
   const smCap = document.getElementById('smCaption')
-  if (smCap) smCap.textContent = [s.description, s.location, s.date].filter(Boolean).join(' · ')
+  if (smCap) smCap.textContent = s.description || ''
+
+  // ── Mostra modal ANTES de renderizar as imagens ──────────
+  // (necessário para lazy loading funcionar — modal precisa estar visível)
+  const modal = document.getElementById('seriesModal')
+  modal.style.display = 'block'
+  modal.style.opacity = '0'
+  document.body.style.overflow = 'hidden'
+
+  // ── Grid responsivo ──────────────────────────────────────
   const grid = document.getElementById('smGrid')
-  grid.style.cssText = 'columns:3;column-gap:3px;width:calc(100% - 600px);margin:0 auto'
+  grid.innerHTML = ''
+  const vw = window.innerWidth
+  const cols = vw >= 1800 ? 4 : vw >= 1200 ? 3 : vw >= 700 ? 2 : 1
+  grid.style.cssText = 'columns:' + cols + ';column-gap:3px;padding:3px'
+
   if (!sp.length) {
-    grid.innerHTML = '<p style="color:#888;padding:40px;text-align:center;font-size:.8rem">Nenhuma foto nesta coleção.</p>'
+    grid.innerHTML = '<p style="color:#888;padding:60px;text-align:center;font-size:.8rem;letter-spacing:.1em;column-span:all">Nenhuma foto nesta coleção.</p>'
   } else {
-    let html = ''
     sp.forEach((p, i) => {
-      const lo = "this.classList.add('loaded')"
-      const pl = "var el=document.getElementById('smph-" + i + "');if(el)el.classList.add('hidden')"
-      html += '<div class="gi" style="cursor:pointer">'
-            + '<div class="gi-placeholder" id="smph-' + i + '"></div>'
-            + '<img src="' + esc(p.url) + '" loading="lazy" onload="' + lo + ';' + pl + '" onerror="' + lo + '">'
-            + '<div class="ov">'
-            + '<div class="ov-top"><div class="ov-cat">' + esc(p.category||'') + '</div><div class="ov-icon">↗</div></div>'
-            + (p.title   ? '<div class="ov-title">' + esc(p.title)   + '</div>' : '')
-            + (p.caption ? '<div class="ov-loc">'   + esc(p.caption) + '</div>' : '')
-            + '</div></div>'
-    })
-    grid.innerHTML = html
-    grid.querySelectorAll('.gi').forEach((el, i) => {
-      el.addEventListener('click', () => openSmLb(i))
+      const wrap = document.createElement('div')
+      wrap.className = 'sm-photo-wrap'
+
+      // Imagem sem lazy — modal já visível
+      const img = document.createElement('img')
+      img.src = p.url
+      img.alt = p.title || ''
+      img.onload  = function() { this.classList.add('loaded') }
+      img.onerror = function() { this.classList.add('loaded') }
+
+      // Overlay idêntico ao .gi do portfólio
+      const series = seriesList.find(s => s.id === p.series_id)
+      const catLabel = p.category || ''
+      wrap.innerHTML = `
+        <div class="ov">
+          <div class="ov-top">
+            <div class="ov-cat">${esc(catLabel)}</div>
+            <div class="ov-icon">↗</div>
+          </div>
+          ${p.title   ? `<div class="ov-title">${esc(p.title)}</div>` : ''}
+          ${p.caption ? `<div class="ov-caption">${esc(p.caption)}</div>` : ''}
+          ${p.title || p.caption ? '<div class="ov-div"></div>' : ''}
+        </div>`
+
+      wrap.insertBefore(img, wrap.firstChild)
+      wrap.addEventListener('click', () => openSmLb(i))
+      grid.appendChild(wrap)
     })
   }
-  document.getElementById('seriesModal').style.display = 'block'
-  document.body.style.overflow = 'hidden'
+
+  // Fade in do modal após renderizar
+  requestAnimationFrame(() => {
+    modal.style.transition = 'opacity .25s ease'
+    modal.style.opacity = '1'
+  })
 }
 
 function closeSeriesModal() {
@@ -1431,38 +1605,238 @@ function renderAdmin() {
   document.getElementById('cntPhotos').textContent   = `(${photos.length})`
   document.getElementById('cntSeries').textContent      = `(${seriesList.length})`
   document.getElementById('cntCategories').textContent  = `(${categoriesList.length})`
-  const unread = messages.filter(m => m.unread).length
-  document.getElementById('cntMessages').innerHTML   =
-    unread ? `<span class="u-badge">${unread}</span>` : `(${messages.length})`
 
   renderPhotosTable()
   renderSeriesTable()
   renderCategoriesTable()
-  renderMessagesPanel()
+}
+
+/* ── Admin Layout State ─────────────────────────────────── */
+let adminLayout = 'grid3'
+let orderMode   = false
+let dragSrcId   = null
+
+/* ── Layout: salva no Supabase e aplica no site público ──── */
+const LAYOUTS = {
+  grid3:    { cols: 3, label: '3 colunas' },
+  grid2:    { cols: 2, label: '2 colunas' },
+  grid4:    { cols: 4, label: '4 colunas' },
+  masonry:  { cols: 3, label: 'Masonry'   },
+  spotlight:{ cols: 3, label: 'Destaque'  }
+}
+
+async function setAdminLayout(layout, btn) {
+  adminLayout = layout
+  // Atualiza botões
+  document.querySelectorAll('.lp-btn').forEach(b => b.classList.remove('active'))
+  if (btn) btn.classList.add('active')
+  renderPhotosTable()
+  // Salva no Supabase → site público usa ao carregar
+  if (btn) {
+    btn.classList.add('saving')
+    try {
+      await sb.from('settings').upsert({ key: 'portfolio_layout', value: layout }, { onConflict: 'key' })
+      btn.classList.remove('saving')
+      btn.classList.add('lp-saved')
+      // Aplica no site público ao vivo
+      applyPublicLayout(layout)
+      setTimeout(() => btn.classList.remove('lp-saved'), 1200)
+    } catch(e) {
+      btn.classList.remove('saving')
+    }
+  }
+}
+
+function applyPublicLayout(layout) {
+  const grid = document.getElementById('photoGrid')
+  if (!grid) return
+
+  // Reseta — NUNCA toca em opacity
+  grid.style.cssText = ''
+  grid.querySelectorAll('.gi').forEach(el => {
+    el.style.cssText = ''
+    el.className = el.className.split(' ')
+      .filter(c => !c.startsWith('layout-'))
+      .join(' ')
+  })
+
+  const gap = layout === 'grid4' ? '2px' : '3px'
+
+  // Spotlight: grid com coluna da esquerda maior (2/3) e direita menor (1/3)
+  // Primeira foto na coluna grande, resto fluem normalmente
+  // Foto nunca é esticada — ocupa a largura da coluna e altura natural
+  if (layout === 'spotlight') {
+    // Spotlight: coluna esquerda 500px (destaque), direita 250px (miniaturas sem gap entre elas)
+    grid.style.display             = 'grid'
+    grid.style.gridTemplateColumns = '500px 250px'
+    grid.style.alignItems          = 'start'
+    grid.style.columnGap           = gap
+    grid.style.rowGap              = '0'
+    const items = grid.querySelectorAll('.gi')
+    items.forEach((el, i) => {
+      el.classList.add('layout-active', 'layout-spotlight')
+      if (i === 0) {
+        el.style.gridColumn = '1'
+        el.style.gridRow    = '1 / 999'
+      } else {
+        el.style.gridColumn    = '2'
+        el.style.marginBottom  = gap
+      }
+    })
+  } else {
+    // grid2 / grid3 / grid4 / masonry: CSS columns puro
+    // Foto ocupa 100% da largura da coluna, altura totalmente natural
+    const cols = { grid2: 2, grid3: 3, grid4: 4, masonry: 3 }[layout] || 3
+    grid.style.display     = 'block'
+    grid.style.columnCount = String(cols)
+    grid.style.columnGap   = gap
+    grid.querySelectorAll('.gi').forEach(el => {
+      el.style.breakInside  = 'avoid'
+      el.style.marginBottom = gap
+      el.classList.add('layout-active', 'layout-' + layout)
+    })
+  }
+}
+
+function toggleOrderMode() {
+  orderMode = !orderMode
+  const btn = document.getElementById('btnOrder')
+  btn.classList.toggle('active', orderMode)
+  const hint = document.getElementById('orderHint')
+  if (orderMode) {
+    hint.style.display = 'flex'
+    hint.style.animation = 'slideDown .25s ease'
+  } else {
+    hint.style.display = 'none'
+  }
+  renderPhotosTable()
+}
+
+function cancelOrderMode() {
+  orderMode = false
+  document.getElementById('btnOrder').classList.remove('active')
+  document.getElementById('orderHint').style.display = 'none'
+  // Recarrega ordem original do Supabase
+  loadAll()
+}
+
+async function saveOrder() {
+  const btn = document.getElementById('btnSaveOrder')
+  btn.textContent = 'Salvando…'
+  btn.classList.add('saving')
+  // Coleta ordem atual do DOM
+  const cards = document.querySelectorAll('[data-photo-id]')
+  const updates = [...cards].map((el, i) => ({ id: el.dataset.photoId, sort_order: i }))
+  // Salva em batch no Supabase
+  const promises = updates.map(u => sb.from('photos').update({ sort_order: u.sort_order }).eq('id', u.id))
+  await Promise.all(promises)
+  // Atualiza array local na mesma ordem
+  photos = updates.map(u => photos.find(p => p.id === u.id)).filter(Boolean)
+  orderMode = false
+  document.getElementById('btnOrder').classList.remove('active')
+  document.getElementById('orderHint').style.display = 'none'
+  renderPhotosTable()
+  renderPortfolio()
+  // Feedback visual
+  const saved = document.createElement('div')
+  saved.textContent = '✓ Ordem publicada'
+  saved.style.cssText = 'position:fixed;bottom:32px;right:32px;background:#1a1a1a;border:1px solid #4caf50;color:#4caf50;padding:10px 18px;font-size:.65rem;letter-spacing:.15em;z-index:9999;animation:slideDown .3s ease'
+  document.body.appendChild(saved)
+  setTimeout(() => saved.remove(), 2500)
+}
+
+function initDrag(container) {
+  let dragSrcEl = null
+  const items = () => [...container.querySelectorAll('[data-photo-id]')]
+
+  container.querySelectorAll('[data-photo-id]').forEach(item => {
+    item.setAttribute('draggable', 'true')
+
+    item.addEventListener('dragstart', e => {
+      dragSrcEl = item
+      dragSrcId = item.dataset.photoId
+      setTimeout(() => item.classList.add('dragging'), 0)
+      e.dataTransfer.effectAllowed = 'move'
+      e.dataTransfer.setData('text/plain', dragSrcId)
+    })
+
+    item.addEventListener('dragend', () => {
+      item.classList.remove('dragging')
+      items().forEach(el => el.classList.remove('drag-over','drop-before'))
+    })
+
+    item.addEventListener('dragover', e => {
+      e.preventDefault()
+      e.dataTransfer.dropEffect = 'move'
+      if (item === dragSrcEl) return
+      items().forEach(el => el.classList.remove('drag-over'))
+      item.classList.add('drag-over')
+    })
+
+    item.addEventListener('dragleave', () => {
+      item.classList.remove('drag-over')
+    })
+
+    item.addEventListener('drop', e => {
+      e.preventDefault()
+      e.stopPropagation()
+      items().forEach(el => el.classList.remove('drag-over'))
+      if (!dragSrcId || dragSrcId === item.dataset.photoId) return
+      const srcIdx = photos.findIndex(p => p.id === dragSrcId)
+      const tgtIdx = photos.findIndex(p => p.id === item.dataset.photoId)
+      if (srcIdx < 0 || tgtIdx < 0) return
+      const [moved] = photos.splice(srcIdx, 1)
+      photos.splice(tgtIdx, 0, moved)
+      renderPhotosTable()
+    })
+  })
 }
 
 function renderPhotosTable() {
   const wrap = document.getElementById('photosTable')
   if (!photos.length) { wrap.innerHTML = `<div class="empty-state">Nenhuma foto cadastrada ainda.</div>`; return }
-  wrap.innerHTML = `
-    <table class="a-table">
-      <thead><tr>
-        <th>Imagem</th><th>Título</th><th>Categoria</th><th>Série</th><th>Data</th><th>Ações</th>
-      </tr></thead>
-      <tbody>${photos.map(p => `
-        <tr>
-          <td><img src="${esc(p.url)}" alt=""></td>
-          <td style="color:var(--text)">${esc(p.title||'—')}</td>
-          <td><span class="badge">${esc(p.category||'—')}</span></td>
-          <td>${esc(seriesList.find(s => s.id === p.series_id)?.name || '—')}</td>
-          <td>${esc(p.date||'—')}</td>
-          <td>
-            <button class="btn-e" onclick="openPhotoForm('${p.id}')">Editar</button>
-            <button class="btn-d" onclick="deletePhoto('${p.id}')">Excluir</button>
-          </td>
-        </tr>`).join('')}
-      </tbody>
-    </table>`
+  const isList = adminLayout === 'list'
+  const isMasonry = adminLayout === 'masonry'
+  const om = orderMode
+
+  if (isList) {
+    wrap.innerHTML = `<div class="adm-list">${photos.map((p, i) => {
+      const sname = esc(seriesList.find(s => s.id === p.series_id)?.name || '')
+      return `<div class="adm-list-row" data-photo-id="${p.id}">
+        ${om ? `<span class="drag-handle" title="Arrastar para reordenar">⠿</span>` : ''}
+        <span class="adm-num">${i+1}</span>
+        <img class="adm-thumb-sm" src="${esc(p.url)}" alt="">
+        <div class="adm-linfo">
+          <div class="adm-title">${esc(p.title||'Sem título')}</div>
+          <div class="adm-meta">${[sname, esc(p.date||''), esc(p.location||'')].filter(Boolean).join(' · ')}</div>
+        </div>
+        <div class="adm-actions">
+          <button class="btn-e" onclick="openPhotoForm('${p.id}')">Editar</button>
+          <button class="btn-d" onclick="deletePhoto('${p.id}')">Excluir</button>
+        </div>
+      </div>`}).join('')}</div>`
+  } else {
+    wrap.innerHTML = `<div class="adm-grid ${adminLayout}${om ? ' order-mode' : ''}">${photos.map((p, i) => {
+      const sname = esc(seriesList.find(s => s.id === p.series_id)?.name || '')
+      return `<div class="adm-card${isMasonry ? ' masonry-card' : ''}" data-photo-id="${p.id}">
+        ${om ? `<div class="drag-handle" title="Segure e arraste para reposicionar">⠿⠿</div>
+                <div class="drag-num">${i+1}</div>` : ''}
+        <img class="adm-thumb" src="${esc(p.url)}" alt="${esc(p.title||'')}">
+        <div class="adm-info">
+          <div class="adm-title">${esc(p.title||'Sem título')}</div>
+          <div class="adm-meta">${[sname, esc(p.date||'')].filter(Boolean).join(' · ') || '—'}</div>
+        </div>
+        <div class="adm-actions">
+          <button class="btn-e" onclick="openPhotoForm('${p.id}')">Editar</button>
+          <button class="btn-d" onclick="deletePhoto('${p.id}')">Excluir</button>
+        </div>
+      </div>`}).join('')}</div>`
+  }
+
+  if (om) {
+    const container = wrap.querySelector('.adm-grid, .adm-list')
+    if (container) initDrag(container)
+  }
 }
 
 function renderSeriesTable() {
@@ -1488,29 +1862,12 @@ function renderSeriesTable() {
     </table>`
 }
 
-function renderMessagesPanel() {
-  const unread = messages.filter(m => m.unread).length
-  document.getElementById('msgTitle').textContent = `${messages.length} mensagem(ns) · ${unread} não lida(s)`
-  const wrap = document.getElementById('messagesWrap')
-  if (!messages.length) { wrap.innerHTML = `<div class="empty-state">Nenhuma mensagem ainda.</div>`; return }
-  wrap.innerHTML = [...messages].reverse().map(m => `
-    <div class="msg-card${m.unread ? ' unread' : ''}" onclick="markRead('${m.id}')">
-      <button class="btn-dm" onclick="event.stopPropagation();deleteMsg('${m.id}')">Excluir</button>
-      <div class="msg-meta">
-        <span class="msg-from">${esc(m.name)}</span>
-        <span class="msg-email">${esc(m.email)}</span>
-        ${m.subject ? `<span class="msg-subj">${esc(m.subject)}</span>` : ''}
-      </div>
-      <div class="msg-body">${esc(m.message)}</div>
-      <div class="msg-date">${new Date(m.created_at).toLocaleString('pt-BR')}</div>
-    </div>`).join('')
-}
 
 /* ═══════════════════════════════════════════
    TAB SWITCH
 ═══════════════════════════════════════════ */
 function switchTab(tab) {
-  ['Photos','Series','Categories','Messages','Hero'].forEach(t => {
+  ['Photos','Series','Categories','Hero'].forEach(t => {
     document.getElementById(`tab${t}`).style.display      = t.toLowerCase() === tab ? 'block' : 'none'
     document.getElementById(`tabBtn${t}`).classList.toggle('active', t.toLowerCase() === tab)
   })
@@ -2131,8 +2488,7 @@ let lbIndex  = 0
 let lbPhotos = []
 
 function openLb(idx) {
-  const filtered = curFilter === 'Todos' ? photos : photos.filter(p => p.category === curFilter)
-  lbPhotos = filtered.slice(0, 7)
+  lbPhotos = photos.slice(0, 7)
   lbIndex  = idx
   renderLb()
   document.getElementById('lightbox').style.display = 'flex'
@@ -2283,17 +2639,25 @@ function initNavHighlight() {
   secs.forEach(s => obs.observe(s))
 }
 </script>
-<div id="seriesModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:700;background:#080808">
-  <div style="position:absolute;top:0;left:0;right:0;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 36px;border-bottom:1px solid #1a1a1a">
-    <div style="display:flex;flex-direction:column;gap:3px">
-      <div id="smTitle" style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#f5f5f5;font-weight:300"></div>
-      <div id="smCaption" style="font-size:.55rem;letter-spacing:.18em;color:#555;text-transform:uppercase"></div>
+<!-- ═══════════════════════════════════════════
+     SERIES MODAL
+═══════════════════════════════════════════ -->
+<div id="seriesModal" style="display:none;position:fixed;inset:0;z-index:700;background:#080808;overflow:hidden">
+
+  <!-- Header -->
+  <div style="position:absolute;top:0;left:0;right:0;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 20px 0 20px;border-bottom:1px solid #1c1c1c;background:rgba(8,8,8,.95);backdrop-filter:blur(12px);z-index:2">
+    <div style="display:flex;flex-direction:column;gap:5px">
+      <div id="smTitle" style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#f5f5f5;font-weight:300;line-height:1"></div>
+      <div id="smCaption" style="font-size:.55rem;letter-spacing:.2em;color:#aaa;text-transform:uppercase"></div>
     </div>
-    <button onclick="closeSeriesModal()" style="background:none;border:1px solid #2a2a2a;color:#666;width:36px;height:36px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center">✕</button>
+    <button onclick="closeSeriesModal()" style="background:none;border:1px solid #2a2a2a;color:#666;width:40px;height:40px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s" onmouseover="this.style.borderColor='#555';this.style.color='#ccc'" onmouseout="this.style.borderColor='#2a2a2a';this.style.color='#666'">✕</button>
   </div>
-  <div style="position:absolute;top:64px;left:0;right:0;bottom:0;overflow-y:scroll;padding:3px">
-    <div id="smGrid"></div>
+
+  <!-- Grid area — padding lateral igual ao header -->
+  <div style="position:absolute;top:72px;left:0;right:0;bottom:0;overflow-y:auto;padding:3px 20px">
+    <div id="smGrid" style="column-gap:3px"></div>
   </div>
+
 </div>
 
 </body>
